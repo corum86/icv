@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from bson import ObjectId
 from pymongo import AsyncMongoClient
 
 load_dotenv()
@@ -28,9 +29,10 @@ async def root():
 @app.get("/api/profile")
 async def get_profile():
     # Await the network operation using the native async driver
-    profile_data = await db.profile.find_one({}, {"_id": "69e778f343c37cdc20de60a2"})
+    profile_data = await db.profile.find_one({"_id": ObjectId("69e778f343c37cdc20de60a2")})
     
     if profile_data:
+        profile_data["_id"] = str(profile_data["_id"])
         return profile_data
         
     raise HTTPException(status_code=404, detail="Profile not found in database")

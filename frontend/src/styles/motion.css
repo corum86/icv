@@ -1,0 +1,47 @@
+:root {
+  --motion-fast: 160ms;
+  --motion-medium: 320ms;
+  --motion-slow: 520ms;
+  --motion-stagger-step: 70ms;
+  --easing-standard: cubic-bezier(0.2, 0.7, 0.22, 0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-medium: 1ms;
+    --motion-slow: 1ms;
+    --motion-stagger-step: 1ms;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--motion-medium) var(--easing-standard),
+    transform var(--motion-medium) var(--easing-standard);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: card-enter var(--motion-medium) var(--easing-standard) forwards;
+  animation-delay: calc(var(--stagger-index, 0) * var(--motion-stagger-step));
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

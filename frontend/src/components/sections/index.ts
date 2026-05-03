@@ -1,0 +1,7 @@
+export { default as HeroSection } from './HeroSection.vue'
+export { default as AboutSection } from './AboutSection.vue'
+export { default as ExperienceSection } from './ExperienceSection.vue'
+export { default as ProjectsSection } from './ProjectsSection.vue'
+export { default as SkillsSection } from './SkillsSection.vue'
+export { default as EducationSection } from './EducationSection.vue'
+export { default as ContactSection } from './ContactSection.vue'

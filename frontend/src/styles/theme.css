@@ -1,0 +1,40 @@
+:root {
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
+
+  --color-bg: #080b14;
+  --color-bg-soft: #0f1524;
+  --color-surface: #131b2e;
+  --color-surface-strong: #1b2742;
+  --color-border: #2e426f;
+  --color-text: #edf2ff;
+  --color-text-muted: #b4bfd9;
+  --color-accent: #f4b942;
+  --color-accent-alt: #46d0c9;
+  --color-danger: #ff7a7a;
+
+  --shadow-soft: 0 12px 30px rgba(4, 8, 16, 0.36);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(70, 208, 201, 0.16), transparent 38%),
+    radial-gradient(circle at 80% 12%, rgba(244, 185, 66, 0.14), transparent 35%),
+    linear-gradient(180deg, #070a12 0%, #070a12 35%, #0b1120 100%);
+}
+
+a {
+  color: var(--color-accent-alt);
+}

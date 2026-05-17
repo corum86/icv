@@ -58,7 +58,7 @@ import {
   SkillsSection,
 } from '@/components/sections'
 import { useActiveSection, useProfileBootstrap, useSnapScroll } from '@/composables'
-import { staticCvContentService } from '@/services'
+import { cvContentService } from '@/services'
 import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
@@ -127,8 +127,8 @@ onMounted(async () => {
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   isReducedMotion.value = reducedMotionQuery.matches
 
-  cvContent.value = await staticCvContentService.getCvContent()
-  markers.value = await staticCvContentService.getPlaceMarkers()
+  cvContent.value = await cvContentService.getCvContent()
+  markers.value = await cvContentService.getPlaceMarkers()
 
   const hashTarget = window.location.hash.replace('#', '') as SectionId
   if (hashTarget) {

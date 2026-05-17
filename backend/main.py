@@ -36,3 +36,14 @@ async def get_profile():
         return profile_data
         
     raise HTTPException(status_code=404, detail="Profile not found in database")
+
+@app.get("/api/cv")
+async def get_cv_data():
+    """Fetch CV data from MongoDB"""
+    cv_data = await db.cv.find_one({})
+    
+    if cv_data:
+        cv_data.pop("_id", None)  # Remove MongoDB _id field
+        return cv_data
+        
+    raise HTTPException(status_code=404, detail="CV data not found in database")

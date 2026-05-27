@@ -1,5 +1,5 @@
 <template>
-  <SectionContainer id="experience" title="Berufserfahrung">
+  <SectionContainer id="experience" :title="t('sections.experience')">
     <TimelinePath :items="items" />
     <StaggerGroup>
       <div
@@ -9,7 +9,7 @@
         :style="{ '--stagger-index': index }"
       >
         <h3>{{ item.role }} - {{ item.company }}</h3>
-        <p>{{ item.start }} bis {{ item.end }}</p>
+        <p>{{ item.start }} {{ t('labels.until') }} {{ item.end }}</p>
         <p>{{ item.summary }}</p>
         <ul>
           <li v-for="point in item.highlights" :key="point">{{ point }}</li>
@@ -20,7 +20,7 @@
           type="button"
           @click="$emit('openMapAt', item.placeId)"
         >
-          Auf Karte anzeigen
+          {{ t('actions.showOnMap') }}
         </button>
       </div>
     </StaggerGroup>
@@ -28,10 +28,14 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 import SectionContainer from '@/components/layout/SectionContainer.vue'
 import TimelinePath from '@/components/svg/TimelinePath.vue'
 import StaggerGroup from '@/components/ui/StaggerGroup.vue'
 import type { ExperienceItem } from '@/types/cv'
+
+const { t } = useI18n()
 
 defineProps<{
   items: ExperienceItem[]

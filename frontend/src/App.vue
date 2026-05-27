@@ -5,17 +5,19 @@
         <img :src="firstLoadingGif" alt="Loading animation" class="loading-gif loading-gif-first" />
         <img :src="secondLoadingGif" alt="" aria-hidden="true" class="loading-gif loading-gif-second" />
       </div>
-      <p>Server wird gestartet, bitte kurz warten...</p>
+      <p>{{ t('status.serverStarting') }}</p>
     </div>
 
     <template v-else>
-      <p v-if="error" class="error-banner">Profil-Endpunkt aktuell nicht erreichbar: {{ error }}</p>
+      <p v-if="error" class="error-banner">{{ t('status.profileEndpointUnavailable') }}: {{ error }}</p>
       <AppShell
         :sections="navSections"
         :active-section="activeSection"
         :relaxed-snap="relaxedSnap"
+        :locale="locale"
         @navigate="handleNavigate"
         @open-map="openMap"
+        @locale-change="handleLocaleChange"
         @root-mounted="setScrollRoot"
       >
         <HeroSection
@@ -45,7 +47,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { AppShell } from '@/components/layout'
 import {
@@ -57,10 +60,12 @@ import {
   ProjectsSection,
   SkillsSection,
 } from '@/components/sections'
+import type { NavSection } from '@/components/layout/TopNav.vue'
 import { useActiveSection, useProfileBootstrap, useSnapScroll } from '@/composables'
 import { cvContentService } from '@/services'
 import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
+import { getCurrentLocale, setLocale, type AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
 
 const sectionIds: SectionId[] = [
@@ -73,15 +78,18 @@ const sectionIds: SectionId[] = [
   'contact',
 ]
 
-const navSections = [
-  { id: 'hero', label: 'Profil' },
-  { id: 'about', label: 'Über mich' },
-  { id: 'experience', label: 'Erfahrung' },
-  { id: 'projects', label: 'Projekte' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Ausbildung' },
-  { id: 'contact', label: 'Kontakt' },
-] as const
+const { t } = useI18n()
+const locale = ref<AppLocale>(getCurrentLocale())
+
+const navSections = computed<NavSection[]>(() => [
+  { id: 'hero', label: t('nav.sections.hero') },
+  { id: 'about', label: t('nav.sections.about') },
+  { id: 'experience', label: t('nav.sections.experience') },
+  { id: 'projects', label: t('nav.sections.projects') },
+  { id: 'skills', label: t('nav.sections.skills') },
+  { id: 'education', label: t('nav.sections.education') },
+  { id: 'contact', label: t('nav.sections.contact') },
+])
 
 const { profile, loading, error, firstLoadingGif, secondLoadingGif, useSecondGif } = useProfileBootstrap()
 const cvContent = ref<CVContent>(cvData)
@@ -123,17 +131,34 @@ const openMapAt = (placeId: string) => {
   mapOpen.value = true
 }
 
+const loadCvContent = async () => {
+  cvContent.value = await cvContentService.getCvContent(locale.value)
+}
+
+const handleLocaleChange = (nextLocale: AppLocale) => {
+  if (nextLocale === locale.value) {
+    return
+  }
+
+  locale.value = nextLocale
+  setLocale(nextLocale)
+}
+
 onMounted(async () => {
   const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   isReducedMotion.value = reducedMotionQuery.matches
 
-  cvContent.value = await cvContentService.getCvContent()
+  await loadCvContent()
   markers.value = await cvContentService.getPlaceMarkers()
 
   const hashTarget = window.location.hash.replace('#', '') as SectionId
   if (hashTarget) {
     handleNavigate(hashTarget)
   }
+})
+
+watch(locale, async () => {
+  await loadCvContent()
 })
 </script>
 

@@ -1,18 +1,19 @@
 import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
+import type { AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker } from '@/types/cv'
 
 export interface CvContentService {
-  getCvContent: () => Promise<CVContent>
+  getCvContent: (locale: AppLocale) => Promise<CVContent>
   getPlaceMarkers: () => Promise<PlaceMarker[]>
 }
 
 // Backend service - fetches from MongoDB via FastAPI
 export const backendCvContentService: CvContentService = {
-  async getCvContent() {
+  async getCvContent(locale) {
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
-      const response = await fetch(`${backendUrl}/api/cv`)
+      const response = await fetch(`${backendUrl}/api/cv?lang=${locale}`)
       
       if (!response.ok) {
         throw new Error(`Backend returned ${response.status}`)
@@ -33,7 +34,7 @@ export const backendCvContentService: CvContentService = {
 
 // Static service - uses local data (useful for development/testing)
 export const staticCvContentService: CvContentService = {
-  async getCvContent() {
+  async getCvContent(_locale) {
     return cvData
   },
   async getPlaceMarkers() {

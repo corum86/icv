@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "ariaLabel": "Main navigation",
+    "openMap": "Open map",
+    "locale": {
+      "de": "DE",
+      "en": "EN"
+    },
+    "sections": {
+      "hero": "Profile",
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "skills": "Skills",
+      "education": "Education",
+      "contact": "Contact"
+    }
+  },
+  "status": {
+    "serverStarting": "Server is starting, please wait a moment...",
+    "profileEndpointUnavailable": "Profile endpoint is currently unavailable"
+  },
+  "sections": {
+    "hero": "Profile",
+    "about": "About",
+    "experience": "Work Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "actions": {
+    "showOnMap": "Show on map",
+    "showLocation": "Show location",
+    "location": "Location",
+    "projectLink": "Project link",
+    "openPage": "Open page",
+    "close": "Close"
+  },
+  "labels": {
+    "until": "to",
+    "skillAreas": "Skill areas",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "website": "Website"
+  },
+  "map": {
+    "careerLocations": "Career locations"
+  }
+}

@@ -31,6 +31,35 @@
   gap: 8px;
 }
 
+.top-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.locale-switch {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(19, 27, 46, 0.7);
+}
+
+.locale-button {
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  min-width: 46px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--easing-standard);
+}
+
+.locale-button.is-active {
+  background: var(--color-accent-alt);
+  color: #09111d;
+}
+
 .nav-link,
 .nav-cta,
 .inline-action,
@@ -165,6 +194,10 @@
     overflow-x: auto;
     flex-wrap: nowrap;
     padding-bottom: 2px;
+  }
+
+  .top-nav-actions {
+    justify-content: space-between;
   }
 
   .section-wrap {

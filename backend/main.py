@@ -38,12 +38,25 @@ async def get_profile():
     raise HTTPException(status_code=404, detail="Profile not found in database")
 
 @app.get("/api/cv")
-async def get_cv_data():
+async def get_cv_data(lang: str = "de"):
     """Fetch CV data from MongoDB"""
     cv_data = await db.cv.find_one({})
     
     if cv_data:
         cv_data.pop("_id", None)  # Remove MongoDB _id field
+
+        # New format: language-aware payload under content.<locale>
+        content = cv_data.get("content")
+        if isinstance(content, dict):
+            requested = content.get(lang)
+            if isinstance(requested, dict):
+                return requested
+
+            fallback = content.get("de")
+            if isinstance(fallback, dict):
+                return fallback
+
+        # Backward compatibility: legacy single-language payload
         return cv_data
         
     raise HTTPException(status_code=404, detail="CV data not found in database")

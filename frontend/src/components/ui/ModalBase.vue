@@ -11,7 +11,7 @@
       >
         <header class="modal-header">
           <strong>{{ title }}</strong>
-          <button class="secondary-button" type="button" @click="emitClose">Close</button>
+          <button class="secondary-button" type="button" @click="emitClose">{{ t('actions.close') }}</button>
         </header>
         <div class="modal-body">
           <slot />
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   open: boolean
@@ -32,6 +33,8 @@ const props = defineProps<{
 const emit = defineEmits<{
   close: []
 }>()
+
+const { t } = useI18n()
 
 const modalRef = ref<HTMLElement | null>(null)
 

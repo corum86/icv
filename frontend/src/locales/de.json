@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "ariaLabel": "Hauptnavigation",
+    "openMap": "Karte oeffnen",
+    "locale": {
+      "de": "DE",
+      "en": "EN"
+    },
+    "sections": {
+      "hero": "Profil",
+      "about": "Ueber mich",
+      "experience": "Erfahrung",
+      "projects": "Projekte",
+      "skills": "Skills",
+      "education": "Ausbildung",
+      "contact": "Kontakt"
+    }
+  },
+  "status": {
+    "serverStarting": "Server wird gestartet, bitte kurz warten...",
+    "profileEndpointUnavailable": "Profil-Endpunkt aktuell nicht erreichbar"
+  },
+  "sections": {
+    "hero": "Profil",
+    "about": "Ueber mich",
+    "experience": "Berufserfahrung",
+    "projects": "Projekte",
+    "skills": "Kompetenzen",
+    "education": "Ausbildung",
+    "contact": "Kontakt"
+  },
+  "actions": {
+    "showOnMap": "Auf Karte anzeigen",
+    "showLocation": "Ort anzeigen",
+    "location": "Ort",
+    "projectLink": "Projektlink",
+    "openPage": "Seite oeffnen",
+    "close": "Schliessen"
+  },
+  "labels": {
+    "until": "bis",
+    "skillAreas": "Kompetenzbereiche",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "website": "Website"
+  },
+  "map": {
+    "careerLocations": "Karrierestandorte"
+  }
+}

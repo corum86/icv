@@ -1,6 +1,8 @@
-import { createApp } from 'vue'
+import { createApp, type Plugin } from 'vue'
 import { Icon } from 'leaflet'
 import App from './App.vue'
+import { i18n, resolveInitialLocale, setLocale } from '@/i18n'
+import '@mariusbongarts/previewbox/dist'
 import 'leaflet/dist/leaflet.css'
 import './styles/theme.css'
 import './styles/motion.css'
@@ -17,4 +19,6 @@ Icon.Default.mergeOptions({
 	shadowUrl: markerShadow,
 })
 
-createApp(App).mount('#app')
+setLocale(resolveInitialLocale())
+
+createApp(App).use(i18n as unknown as Plugin).mount('#app')

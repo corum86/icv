@@ -40,14 +40,26 @@ async def seed_cv_data():
 
     client = AsyncMongoClient(mongo_url)
     db = client.cv_db
+
+    if "content" not in cv_data:
+        # Backward compatibility: wrap legacy single-language data.
+        cv_data = {
+            "languages": ["de", "en"],
+            "defaultLanguage": "de",
+            "content": {
+                "de": cv_data,
+                "en": cv_data,
+            },
+        }
+        print("Wrapped legacy cv_data.json into bilingual content format")
     
     try:
         # Delete existing CV data (optional, comment out if you want to keep previous versions)
-        result = await db.cv_data.delete_many({})
+        result = await db.cv.delete_many({})
         print(f"Deleted {result.deleted_count} existing CV data entries")
         
         # Insert new CV data
-        result = await db.cv_data.insert_one(cv_data)
+        result = await db.cv.insert_one(cv_data)
         print(f"✓ CV data successfully inserted with ID: {result.inserted_id}")
         return True
         

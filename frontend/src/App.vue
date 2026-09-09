@@ -61,7 +61,12 @@ import {
   SkillsSection,
 } from '@/components/sections'
 import type { NavSection } from '@/components/layout/TopNav.vue'
-import { useActiveSection, useProfileBootstrap, useSnapScroll } from '@/composables'
+import {
+  useActiveSection,
+  useProfileBootstrap,
+  useScrollGradient,
+  useSnapScroll,
+} from '@/composables'
 import { cvContentService } from '@/services'
 import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
@@ -105,6 +110,8 @@ const { isStrictSnap, scrollToSection } = useSnapScroll({
   rootRef: scrollRootRef,
   isReducedMotion,
 })
+
+useScrollGradient(scrollRootRef)
 
 const relaxedSnap = computed(() => !isStrictSnap.value)
 

@@ -1,3 +1,12 @@
+/* Scroll-driven background: written by useScrollGradient (0 at top, 1 at bottom).
+   Registering it lets the browser transition intermediate values, so large
+   jumps (nav clicks) ease instead of snapping. */
+@property --scroll-progress {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
 :root {
   --font-display: 'Fraunces', 'Times New Roman', serif;
   --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
@@ -17,6 +26,8 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
+
+  transition: --scroll-progress 260ms linear;
 }
 
 html,
@@ -29,10 +40,38 @@ body {
   margin: 0;
   color: var(--color-text);
   font-family: var(--font-body);
+  /* Colour + focal point of each glow are mixed between a "top" and "bottom"
+     state by --scroll-progress, so the background drifts as the page scrolls. */
+  --glow-teal: color-mix(
+    in oklab,
+    rgba(70, 208, 201, 0.16),
+    rgba(146, 110, 245, 0.2) calc(var(--scroll-progress) * 100%)
+  );
+  --glow-amber: color-mix(
+    in oklab,
+    rgba(244, 185, 66, 0.14),
+    rgba(70, 128, 220, 0.17) calc(var(--scroll-progress) * 100%)
+  );
+  --base-top: color-mix(in oklab, #070a12, #0a0f1e calc(var(--scroll-progress) * 100%));
+  --base-bottom: color-mix(in oklab, #0b1120, #131a30 calc(var(--scroll-progress) * 100%));
+
   background:
-    radial-gradient(circle at 20% 20%, rgba(70, 208, 201, 0.16), transparent 38%),
-    radial-gradient(circle at 80% 12%, rgba(244, 185, 66, 0.14), transparent 35%),
-    linear-gradient(180deg, #070a12 0%, #070a12 35%, #0b1120 100%);
+    radial-gradient(
+      circle at calc(20% + 34% * var(--scroll-progress)) calc(20% + 16% * var(--scroll-progress)),
+      var(--glow-teal),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at calc(80% - 30% * var(--scroll-progress)) calc(12% + 46% * var(--scroll-progress)),
+      var(--glow-amber),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      var(--base-top) 0%,
+      var(--base-top) 35%,
+      var(--base-bottom) 100%
+    );
 }
 
 a {

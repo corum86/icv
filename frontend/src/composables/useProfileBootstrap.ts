@@ -31,7 +31,7 @@ export function useProfileBootstrap() {
 
   onMounted(async () => {
     try {
-      const profileEndpoint = `${API_URL}api/profile`
+      const profileEndpoint = `${API_URL}/api/profile`
       const response = await fetch(profileEndpoint)
 
       if (!response.ok) {

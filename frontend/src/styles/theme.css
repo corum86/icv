@@ -33,11 +33,13 @@
 html,
 body,
 #app {
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
+  /* Scrolling is delegated to .sections-scroll-root; keep the window itself fixed. */
+  overflow: hidden;
   color: var(--color-text);
   font-family: var(--font-body);
   /* Colour + focal point of each glow are mixed between a "top" and "bottom"

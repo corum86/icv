@@ -97,6 +97,9 @@
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   padding-top: 64px;
+  /* Offset snap / scrollIntoView / hash jumps so a section rests below the
+     fixed nav with a little breathing room instead of tucking under it. */
+  scroll-padding-top: 88px;
 }
 
 .sections-scroll-root.is-relaxed {
@@ -105,7 +108,7 @@
 
 .section-wrap {
   scroll-snap-align: start;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 88px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,17 +117,40 @@
 
 .section-card {
   width: min(980px, 100%);
-  background: linear-gradient(145deg, rgba(19, 27, 46, 0.9), rgba(13, 19, 34, 0.86));
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: linear-gradient(145deg, rgba(19, 27, 46, 0.35), rgba(13, 19, 34, 0.28));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   padding: 28px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Stacked cards (Experience, Education) sit directly in the section-card or in
+   a StaggerGroup and otherwise have no separation. */
+.stagger {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .section-card {
+    background: linear-gradient(145deg, rgba(19, 27, 46, 0.88), rgba(13, 19, 34, 0.84));
+  }
+
+  .card {
+    background: rgba(27, 39, 66, 0.9);
+  }
 }
 
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 2vw, 2.2rem);
-  margin: 0 0 16px;
+  margin: 0;
 }
 
 .grid-two {
@@ -134,10 +160,12 @@
 }
 
 .card {
-  background: rgba(27, 39, 66, 0.65);
+  background: rgba(27, 39, 66, 0.4);
   border: 1px solid rgba(70, 208, 201, 0.28);
   border-radius: var(--radius-md);
   padding: 14px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .modal-overlay {
@@ -207,5 +235,6 @@
 
   .sections-scroll-root {
     padding-top: 84px;
+    scroll-padding-top: 104px;
   }
 }

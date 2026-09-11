@@ -1,4 +1,4 @@
-import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
+import { onBeforeUnmount, ref, watch, type Ref } from 'vue'
 
 import type { SectionId } from '@/types/cv'
 
@@ -20,11 +20,8 @@ export function useActiveSection(
     syncHash(sectionId)
   }
 
-  onMounted(() => {
-    const root = scrollRootRef.value
-    if (!root) {
-      return
-    }
+  const observe = (root: HTMLElement) => {
+    observer?.disconnect()
 
     const hashId = window.location.hash.replace('#', '') as SectionId
     if (hashId && sectionIds.includes(hashId)) {
@@ -37,16 +34,14 @@ export function useActiveSection(
           .filter((entry) => entry.isIntersecting)
           .sort((left, right) => right.intersectionRatio - left.intersectionRatio)
 
-        if (visible.length > 0) {
-          const topEntry = visible[0]
-          if (!topEntry) {
-            return
-          }
+        const topEntry = visible[0]
+        if (!topEntry) {
+          return
+        }
 
-          const id = topEntry.target.getAttribute('id') as SectionId | null
-          if (id && id !== activeSection.value) {
-            setActive(id)
-          }
+        const id = topEntry.target.getAttribute('id') as SectionId | null
+        if (id && id !== activeSection.value) {
+          setActive(id)
         }
       },
       {
@@ -61,9 +56,23 @@ export function useActiveSection(
         observer?.observe(section)
       }
     })
-  })
+  }
+
+  const stopWatch = watch(
+    scrollRootRef,
+    (root) => {
+      if (root) {
+        observe(root)
+      } else {
+        observer?.disconnect()
+        observer = null
+      }
+    },
+    { immediate: true },
+  )
 
   onBeforeUnmount(() => {
+    stopWatch()
     observer?.disconnect()
   })
 

@@ -1,6 +1,5 @@
 <template>
   <SectionContainer id="experience" :title="t('sections.experience')">
-    <TimelinePath :items="items" />
     <StaggerGroup>
       <div
         v-for="(item, index) in items"
@@ -31,7 +30,6 @@
 import { useI18n } from 'vue-i18n'
 
 import SectionContainer from '@/components/layout/SectionContainer.vue'
-import TimelinePath from '@/components/svg/TimelinePath.vue'
 import StaggerGroup from '@/components/ui/StaggerGroup.vue'
 import type { ExperienceItem } from '@/types/cv'
 

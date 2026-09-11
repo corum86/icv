@@ -57,6 +57,7 @@ import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
 import { getCurrentLocale, setLocale, type AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
+import { Analytics } from "@vercel/analytics/vue"
 
 const sectionIds: SectionId[] = [
   'hero',

@@ -11,12 +11,14 @@ Frontend (run from `frontend/`):
 - `npm run dev` — Vite dev server at http://localhost:5173
 - `npm run build` — runs `type-check` (vue-tsc) and `build-only` (vite build) in parallel
 - `npm run test:unit` — Vitest; pass a path to run a single spec, e.g. `npm run test:unit -- src/__tests__/CVMap.spec.ts`
+- `npm run test:e2e` — Playwright; `playwright.config.ts` boots both dev servers itself (backend via `uv run uvicorn`, frontend via `npm run dev`), so nothing needs to be running beforehand. Reuses already-running servers on 5173/8000 outside CI.
 - `npm run lint` — runs both `lint:oxlint` (oxlint --fix) and `lint:eslint` (eslint --fix --cache)
 - `npm run format` — Prettier over `src/`
 
 Backend (run from `backend/`):
-- `python -m uvicorn main:app --reload` — dev server at http://localhost:8000
+- `python -m uvicorn main:app --reload` — dev server at http://localhost:8000 (or `uv run uvicorn main:app --reload` if using uv, see [.claude/skills/run-project/SKILL.md](.claude/skills/run-project/SKILL.md))
 - `python seed_cv_data.py` — loads `backend/cv_data.json` into MongoDB (collection `cv`)
+- `uv run pytest` — unit tests against a fake DB (no MongoDB needed); install dev deps first with `uv pip install -r requirements-dev.txt`
 
 ## Architecture
 
@@ -46,4 +48,8 @@ Per AGENTS.md: seeding and the API currently agree on collection `cv` (not `cv_d
 
 ### Testing
 
-Vitest + jsdom, specs under `frontend/src/__tests__/`, setup file at `frontend/src/__tests__/setup.ts`. `vitest.config.ts` merges into `vite.config.ts`, so the `@` path alias applies in tests too.
+Frontend unit: Vitest + jsdom, specs under `frontend/src/__tests__/`, setup file at `frontend/src/__tests__/setup.ts`. `vitest.config.ts` merges into `vite.config.ts`, so the `@` path alias applies in tests too. `vitest.config.ts` sets `test.execArgv: ['--no-experimental-webstorage']` — Node's own built-in `localStorage` global (stable since Node 24) otherwise shadows jsdom's `window.localStorage` in the test worker (since vitest's jsdom environment runs with `window === globalThis`), leaving it `undefined` and breaking any test that calls `i18n.ts`'s `setLocale`.
+
+Frontend e2e: Playwright, specs under `frontend/e2e/`, config at `frontend/playwright.config.ts`. The config's `webServer` array starts the backend (`uv run uvicorn`, cwd `../backend`) and the frontend (`npm run dev`, with `VITE_BACKEND_URL` overridden to the local backend) so e2e runs are self-contained and don't depend on the production Render backend or a committed `.env`.
+
+Backend: pytest, specs under `backend/tests/`. `backend/tests/conftest.py` monkeypatches `main.db` with an in-memory fake (`FakeDB`/`FakeCollection`) so tests don't touch the real MongoDB Atlas cluster in `backend/.env`. Dev-only deps (`pytest`, `httpx`) are in `backend/requirements-dev.txt`, layered on top of `requirements.txt`.

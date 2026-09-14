@@ -28,6 +28,12 @@
   transform: translateY(0);
 }
 
+.stagger {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .stagger > * {
   opacity: 0;
   transform: translateY(12px);

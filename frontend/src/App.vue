@@ -9,24 +9,14 @@
     </div>
 
     <template v-else>
+      <Analytics />
+
       <p v-if="error" class="error-banner">{{ t('status.profileEndpointUnavailable') }}: {{ error }}</p>
-      <AppShell
-        :sections="navSections"
-        :active-section="activeSection"
-        :relaxed-snap="relaxedSnap"
-        :locale="locale"
-        @navigate="handleNavigate"
-        @open-map="openMap"
-        @locale-change="handleLocaleChange"
-        @root-mounted="setScrollRoot"
-      >
-        <HeroSection
-          :hero="cvContent.hero"
-          :profile-name="profile?.name"
-          :profile-title="profile?.title"
-          @open-map="openMap"
-          @jump-to-projects="handleNavigate('projects')"
-        />
+      <AppShell :sections="navSections" :active-section="activeSection" :relaxed-snap="relaxedSnap" :locale="locale"
+        @navigate="handleNavigate" @open-map="openMap" @locale-change="handleLocaleChange"
+        @root-mounted="setScrollRoot">
+        <HeroSection :hero="cvContent.hero" :profile-name="profile?.name" :profile-title="profile?.title"
+          @open-map="openMap" @jump-to-projects="handleNavigate('projects')" />
         <AboutSection :about="cvContent.about" />
         <ExperienceSection :items="cvContent.experience" @open-map-at="openMapAt" />
         <ProjectsSection :projects="cvContent.projects" @open-map-at="openMapAt" />
@@ -35,13 +25,8 @@
         <ContactSection :contact="cvContent.contact" />
       </AppShell>
 
-      <component
-        :is="CVMapModalAsync"
-        :open="mapOpen"
-        :markers="markers"
-        :focus-marker-id="focusedMarkerId"
-        @close="mapOpen = false"
-      />
+      <component :is="CVMapModalAsync" :open="mapOpen" :markers="markers" :focus-marker-id="focusedMarkerId"
+        @close="mapOpen = false" />
     </template>
   </main>
 </template>
@@ -72,6 +57,7 @@ import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
 import { getCurrentLocale, setLocale, type AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
+import { Analytics } from "@vercel/analytics/vue"
 
 const sectionIds: SectionId[] = [
   'hero',

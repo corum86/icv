@@ -7,9 +7,7 @@
         <p>{{ group.skills.join(', ') }}</p>
       </article>
     </div>
-    <p>
-      {{ t('labels.skillAreas') }}: <AnimatedCounter :value="skills.length" />
-    </p>
+    <p>{{ t('labels.skillAreas') }}: <AnimatedCounter :value="skills.length" /></p>
   </SectionContainer>
 </template>
 

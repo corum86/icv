@@ -2,8 +2,12 @@
   <SectionContainer id="contact" :title="t('sections.contact')">
     <div class="grid-two">
       <article class="card">
-        <p>{{ t('labels.email') }}: <a :href="`mailto:${contact.email}`">{{ contact.email }}</a></p>
-        <p v-if="contact.phone">{{ t('labels.phone') }}: <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a></p>
+        <p>
+          {{ t('labels.email') }}: <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+        </p>
+        <p v-if="contact.phone">
+          {{ t('labels.phone') }}: <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a>
+        </p>
       </article>
       <article class="card">
         <p v-if="contact.website">

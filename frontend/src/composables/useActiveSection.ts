@@ -2,10 +2,7 @@ import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
 
 import type { SectionId } from '@/types/cv'
 
-export function useActiveSection(
-  sectionIds: SectionId[],
-  scrollRootRef: Ref<HTMLElement | null>,
-) {
+export function useActiveSection(sectionIds: SectionId[], scrollRootRef: Ref<HTMLElement | null>) {
   const activeSection = ref<SectionId>(sectionIds[0] ?? 'hero')
   let observer: IntersectionObserver | null = null
 

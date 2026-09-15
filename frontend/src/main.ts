@@ -14,11 +14,13 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 
 delete (Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl
 Icon.Default.mergeOptions({
-	iconRetinaUrl: markerRetina,
-	iconUrl: marker,
-	shadowUrl: markerShadow,
+  iconRetinaUrl: markerRetina,
+  iconUrl: marker,
+  shadowUrl: markerShadow,
 })
 
 setLocale(resolveInitialLocale())
 
-createApp(App).use(i18n as unknown as Plugin).mount('#app')
+createApp(App)
+  .use(i18n as unknown as Plugin)
+  .mount('#app')

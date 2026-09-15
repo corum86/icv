@@ -10,28 +10,34 @@ describe('App', () => {
   it('renders sections after bootstrap fetch', async () => {
     setLocale('de')
 
-    vi.stubGlobal('fetch', vi.fn().mockImplementation((input: RequestInfo | URL) => {
-      const url = String(input)
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockImplementation((input: RequestInfo | URL) => {
+        const url = String(input)
 
-      if (url.includes('/api/profile')) {
+        if (url.includes('/api/profile')) {
+          return Promise.resolve({
+            ok: true,
+            json: async () => ({
+              name: 'Sergkei Kournosenkov',
+              title: 'Web- und Softwareentwickler',
+            }),
+          })
+        }
+
+        if (url.includes('/api/cv')) {
+          return Promise.resolve({
+            ok: true,
+            json: async () => cvData,
+          })
+        }
+
         return Promise.resolve({
-          ok: true,
-          json: async () => ({ name: 'Sergkei Kournosenkov', title: 'Web- und Softwareentwickler' }),
+          ok: false,
+          json: async () => ({}),
         })
-      }
-
-      if (url.includes('/api/cv')) {
-        return Promise.resolve({
-          ok: true,
-          json: async () => cvData,
-        })
-      }
-
-      return Promise.resolve({
-        ok: false,
-        json: async () => ({}),
-      })
-    }))
+      }),
+    )
 
     const wrapper = mount(App, {
       global: {

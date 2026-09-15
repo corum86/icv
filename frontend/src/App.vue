@@ -3,7 +3,12 @@
     <div v-if="loading" class="loading-state">
       <div class="loading-gif-stage" :class="{ 'show-second': useSecondGif }">
         <img :src="firstLoadingGif" alt="Loading animation" class="loading-gif loading-gif-first" />
-        <img :src="secondLoadingGif" alt="" aria-hidden="true" class="loading-gif loading-gif-second" />
+        <img
+          :src="secondLoadingGif"
+          alt=""
+          aria-hidden="true"
+          class="loading-gif loading-gif-second"
+        />
       </div>
       <p>{{ t('status.serverStarting') }}</p>
     </div>
@@ -11,12 +16,26 @@
     <template v-else>
       <Analytics />
 
-      <p v-if="error" class="error-banner">{{ t('status.profileEndpointUnavailable') }}: {{ error }}</p>
-      <AppShell :sections="navSections" :active-section="activeSection" :relaxed-snap="relaxedSnap" :locale="locale"
-        @navigate="handleNavigate" @open-map="openMap" @locale-change="handleLocaleChange"
-        @root-mounted="setScrollRoot">
-        <HeroSection :hero="cvContent.hero" :profile-name="profile?.name" :profile-title="profile?.title"
-          @open-map="openMap" @jump-to-projects="handleNavigate('projects')" />
+      <p v-if="error" class="error-banner">
+        {{ t('status.profileEndpointUnavailable') }}: {{ error }}
+      </p>
+      <AppShell
+        :sections="navSections"
+        :active-section="activeSection"
+        :relaxed-snap="relaxedSnap"
+        :locale="locale"
+        @navigate="handleNavigate"
+        @open-map="openMap"
+        @locale-change="handleLocaleChange"
+        @root-mounted="setScrollRoot"
+      >
+        <HeroSection
+          :hero="cvContent.hero"
+          :profile-name="profile?.name"
+          :profile-title="profile?.title"
+          @open-map="openMap"
+          @jump-to-projects="handleNavigate('projects')"
+        />
         <AboutSection :about="cvContent.about" />
         <ExperienceSection :items="cvContent.experience" @open-map-at="openMapAt" />
         <ProjectsSection :projects="cvContent.projects" @open-map-at="openMapAt" />
@@ -25,8 +44,13 @@
         <ContactSection :contact="cvContent.contact" />
       </AppShell>
 
-      <component :is="CVMapModalAsync" :open="mapOpen" :markers="markers" :focus-marker-id="focusedMarkerId"
-        @close="mapOpen = false" />
+      <component
+        :is="CVMapModalAsync"
+        :open="mapOpen"
+        :markers="markers"
+        :focus-marker-id="focusedMarkerId"
+        @close="mapOpen = false"
+      />
     </template>
   </main>
 </template>
@@ -57,7 +81,7 @@ import { cvData } from '@/data/cvData'
 import { places } from '@/data/places'
 import { getCurrentLocale, setLocale, type AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
-import { Analytics } from "@vercel/analytics/vue"
+import { Analytics } from '@vercel/analytics/vue'
 
 const sectionIds: SectionId[] = [
   'hero',
@@ -82,7 +106,8 @@ const navSections = computed<NavSection[]>(() => [
   { id: 'contact', label: t('nav.sections.contact') },
 ])
 
-const { profile, loading, error, firstLoadingGif, secondLoadingGif, useSecondGif } = useProfileBootstrap()
+const { profile, loading, error, firstLoadingGif, secondLoadingGif, useSecondGif } =
+  useProfileBootstrap()
 const cvContent = ref<CVContent>(cvData)
 const markers = ref<PlaceMarker[]>(places)
 const mapOpen = ref(false)

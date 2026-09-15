@@ -1,8 +1,17 @@
 <template>
   <svg viewBox="0 0 640 150" role="img" aria-label="Experience timeline" class="timeline-svg">
-    <path d="M 30 70 C 160 10, 320 130, 610 70" stroke="currentColor" stroke-width="2" fill="none" />
+    <path
+      d="M 30 70 C 160 10, 320 130, 610 70"
+      stroke="currentColor"
+      stroke-width="2"
+      fill="none"
+    />
     <defs>
-      <clipPath v-for="item in orderedItems" :key="`clip-${item.id}`" :id="`timeline-clip-${item.id}`">
+      <clipPath
+        v-for="item in orderedItems"
+        :key="`clip-${item.id}`"
+        :id="`timeline-clip-${item.id}`"
+      >
         <circle r="15" />
       </clipPath>
     </defs>
@@ -13,7 +22,12 @@
       tabindex="0"
     >
       <title>{{ item.company }} - {{ item.role }}</title>
-      <circle r="16" fill="var(--color-bg-soft)" stroke="var(--color-accent-alt)" stroke-width="2" />
+      <circle
+        r="16"
+        fill="var(--color-bg-soft)"
+        stroke="var(--color-accent-alt)"
+        stroke-width="2"
+      />
       <image
         :href="milestoneIcons[index]"
         x="-15"
@@ -49,7 +63,9 @@ const orderedItems = computed(() => [...props.items].reverse())
 
 const milestoneIcons = ['/images/intern.svg', '/images/head.svg', '/images/engineer.svg']
 
-const gap = computed(() => (orderedItems.value.length > 1 ? 540 / (orderedItems.value.length - 1) : 0))
+const gap = computed(() =>
+  orderedItems.value.length > 1 ? 540 / (orderedItems.value.length - 1) : 0,
+)
 </script>
 
 <style scoped>

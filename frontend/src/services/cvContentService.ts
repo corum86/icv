@@ -14,11 +14,11 @@ export const backendCvContentService: CvContentService = {
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
       const response = await fetch(`${backendUrl}api/cv?lang=${locale}`)
-      
+
       if (!response.ok) {
         throw new Error(`Backend returned ${response.status}`)
       }
-      
+
       const data = await response.json()
       return data as CVContent
     } catch (error) {

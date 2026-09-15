@@ -8,7 +8,9 @@
           <p>{{ marker.role }}</p>
           <p>{{ marker.dateRange }}</p>
           <p>{{ marker.summary }}</p>
-          <a v-if="marker.link" :href="marker.link" target="_blank" rel="noreferrer">Mehr erfahren</a>
+          <a v-if="marker.link" :href="marker.link" target="_blank" rel="noreferrer"
+            >Mehr erfahren</a
+          >
         </article>
       </LPopup>
     </LMarker>

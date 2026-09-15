@@ -8,8 +8,15 @@ interface SnapScrollOptions {
   isReducedMotion: Ref<boolean>
 }
 
-const WHEEL_COOLDOWN_MS = 550
+const SNAP_DURATION_MS = 1100
+const WHEEL_COOLDOWN_MS = SNAP_DURATION_MS + 50
 const WHEEL_SENSITIVITY = 24
+
+// The 80px gap above each card is handled by .section-wrap's own top padding
+// (see layout.css) so it holds under CSS scroll-snap instead of being fought by it.
+const SECTION_TOP_OFFSET_PX = 0
+
+const easeInOutQuint = (t: number) => (t < 0.5 ? 16 * t ** 5 : 1 - (-2 * t + 2) ** 5 / 2)
 
 export function useSnapScroll({ sectionIds, rootRef, isReducedMotion }: SnapScrollOptions) {
   const isMobile = computed(() => {
@@ -21,6 +28,7 @@ export function useSnapScroll({ sectionIds, rootRef, isReducedMotion }: SnapScro
   })
   const isStrictSnap = computed(() => !isMobile.value && !isReducedMotion.value)
   let wheelLocked = false
+  let scrollAnimationFrame: number | null = null
 
   const getCurrentIndex = () => {
     const hash = window.location.hash.replace('#', '') as SectionId
@@ -58,7 +66,47 @@ export function useSnapScroll({ sectionIds, rootRef, isReducedMotion }: SnapScro
     const bounded = Math.max(0, Math.min(sectionIds.length - 1, index))
     const id = sectionIds[bounded]
     const section = root.querySelector<HTMLElement>(`#${id}`)
-    section?.scrollIntoView({ behavior: isReducedMotion.value ? 'auto' : 'smooth', block: 'start' })
+    if (!section) {
+      return
+    }
+
+    const delta = section.getBoundingClientRect().top - root.getBoundingClientRect().top
+    const maxScrollTop = root.scrollHeight - root.clientHeight
+    const targetScrollTop = Math.max(
+      0,
+      Math.min(maxScrollTop, root.scrollTop + delta - SECTION_TOP_OFFSET_PX),
+    )
+
+    if (scrollAnimationFrame !== null) {
+      cancelAnimationFrame(scrollAnimationFrame)
+      scrollAnimationFrame = null
+    }
+
+    if (isReducedMotion.value) {
+      root.scrollTop = targetScrollTop
+      return
+    }
+
+    const startScrollTop = root.scrollTop
+    const distance = targetScrollTop - startScrollTop
+    if (Math.abs(distance) < 1) {
+      return
+    }
+
+    const startTime = performance.now()
+
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - startTime) / SNAP_DURATION_MS)
+      root.scrollTop = startScrollTop + distance * easeInOutQuint(progress)
+
+      if (progress < 1) {
+        scrollAnimationFrame = requestAnimationFrame(step)
+      } else {
+        scrollAnimationFrame = null
+      }
+    }
+
+    scrollAnimationFrame = requestAnimationFrame(step)
   }
 
   const lockWheel = () => {
@@ -132,6 +180,10 @@ export function useSnapScroll({ sectionIds, rootRef, isReducedMotion }: SnapScro
     root?.removeEventListener('wheel', onWheel)
     window.removeEventListener('keydown', onKeyDown)
     window.removeEventListener('hashchange', onHashChange)
+
+    if (scrollAnimationFrame !== null) {
+      cancelAnimationFrame(scrollAnimationFrame)
+    }
   })
 
   return {

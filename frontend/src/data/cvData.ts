@@ -97,22 +97,56 @@ export const cvData: CVContent = {
     {
       id: 'skills-front',
       label: 'Frontend',
-      skills: ['JavaScript', 'Angular', 'React', 'Ajax', 'jQuery', 'HTML', 'CSS', 'SCSS', 'LESS', 'SASS'],
+      skills: [
+        'JavaScript',
+        'Angular',
+        'React',
+        'Ajax',
+        'jQuery',
+        'HTML',
+        'CSS',
+        'SCSS',
+        'LESS',
+        'SASS',
+      ],
     },
     {
       id: 'skills-backend',
       label: 'Backend & Datenbanken',
-      skills: ['PHP (OOP, Smarty)', 'Java (Spring Boot)', 'C#', 'MySQL', 'PostgreSQL', 'SQL Server (T-SQL)'],
+      skills: [
+        'PHP (OOP, Smarty)',
+        'Java (Spring Boot)',
+        'C#',
+        'MySQL',
+        'PostgreSQL',
+        'SQL Server (T-SQL)',
+      ],
     },
     {
       id: 'skills-platform',
       label: 'Plattformen & Tools',
-      skills: ['Mendix', 'GitHub', 'GitLab', 'Gitea', 'Subversion', 'Tailwind', 'Bootstrap', 'RESTful/SOAP APIs'],
+      skills: [
+        'Mendix',
+        'GitHub',
+        'GitLab',
+        'Gitea',
+        'Subversion',
+        'Tailwind',
+        'Bootstrap',
+        'RESTful/SOAP APIs',
+      ],
     },
     {
       id: 'skills-additional',
       label: 'Weitere Kenntnisse',
-      skills: ['Flutter/Dart', 'Google APIs', 'SAP (Grundkenntnisse)', 'Salesforce (Grundkenntnisse)', 'Unity', 'Unreal 4'],
+      skills: [
+        'Flutter/Dart',
+        'Google APIs',
+        'SAP (Grundkenntnisse)',
+        'Salesforce (Grundkenntnisse)',
+        'Unity',
+        'Unreal 4',
+      ],
     },
   ],
   education: [
@@ -148,7 +182,7 @@ export const cvData: CVContent = {
   contact: {
     email: 'ser.corum@gmail.com',
     phone: '+49 176 80829512',
-    location: 'Sedanstr. 55a, 42281 Wuppertal',
+    website: 'https://www.kournosenkov.com',
     links: [
       { label: 'GitHub', href: 'https://github.com/corum86' },
       {

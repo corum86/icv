@@ -2,7 +2,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 import type { Profile } from '@/types/profile'
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL
 const FIRST_GIF_DURATION_MS = 2500
 
 export function useProfileBootstrap() {

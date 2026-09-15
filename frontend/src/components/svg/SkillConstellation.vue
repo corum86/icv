@@ -11,7 +11,12 @@
       stroke-width="1.2"
     />
     <g v-for="node in nodes" :key="node.label" :transform="`translate(${node.x}, ${node.y})`">
-      <circle r="10" fill="var(--color-surface-strong)" stroke="var(--color-accent-alt)" tabindex="0">
+      <circle
+        r="10"
+        fill="var(--color-surface-strong)"
+        stroke="var(--color-accent-alt)"
+        tabindex="0"
+      >
         <title>{{ node.label }}</title>
       </circle>
       <text y="24" text-anchor="middle" font-size="11">{{ node.label }}</text>

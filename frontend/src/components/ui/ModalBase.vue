@@ -11,7 +11,9 @@
       >
         <header class="modal-header">
           <strong>{{ title }}</strong>
-          <button class="secondary-button" type="button" @click="emitClose">{{ t('actions.close') }}</button>
+          <button class="secondary-button" type="button" @click="emitClose">
+            {{ t('actions.close') }}
+          </button>
         </header>
         <div class="modal-body">
           <slot />

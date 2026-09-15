@@ -62,7 +62,6 @@ export interface ContactContent {
   email: string
   phone?: string
   website?: string
-  location: string
   links: Array<{
     label: string
     href: string

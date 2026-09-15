@@ -68,12 +68,7 @@ body {
       var(--glow-amber),
       transparent 38%
     ),
-    linear-gradient(
-      180deg,
-      var(--base-top) 0%,
-      var(--base-top) 35%,
-      var(--base-bottom) 100%
-    );
+    linear-gradient(180deg, var(--base-top) 0%, var(--base-top) 35%, var(--base-bottom) 100%);
 }
 
 a {

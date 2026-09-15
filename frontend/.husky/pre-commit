@@ -1,0 +1,9 @@
+cd frontend && npx lint-staged
+cd "$(git rev-parse --show-toplevel)"
+
+staged_py=$(git diff --cached --name-only --diff-filter=ACM -- 'backend/*.py')
+if [ -n "$staged_py" ]; then
+  echo "$staged_py" | xargs uvx ruff check --fix
+  echo "$staged_py" | xargs uvx ruff format
+  echo "$staged_py" | xargs git add
+fi

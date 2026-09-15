@@ -1,9 +1,9 @@
 :root {
   --motion-fast: 160ms;
-  --motion-medium: 320ms;
+  --motion-medium: 1260ms;
   --motion-slow: 520ms;
-  --motion-stagger-step: 70ms;
-  --easing-standard: cubic-bezier(0.2, 0.7, 0.22, 0.98);
+  --motion-stagger-step: 330ms;
+  --easing-standard: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -37,6 +37,9 @@
 .stagger > * {
   opacity: 0;
   transform: translateY(12px);
+}
+
+.stagger.is-visible > * {
   animation: card-enter var(--motion-medium) var(--easing-standard) forwards;
   animation-delay: calc(var(--stagger-index, 0) * var(--motion-stagger-step));
 }

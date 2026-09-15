@@ -13,7 +13,7 @@ export const backendCvContentService: CvContentService = {
   async getCvContent(locale) {
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
-      const response = await fetch(`${backendUrl}/api/cv?lang=${locale}`)
+      const response = await fetch(`${backendUrl}api/cv?lang=${locale}`)
       
       if (!response.ok) {
         throw new Error(`Backend returned ${response.status}`)

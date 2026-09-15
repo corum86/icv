@@ -148,7 +148,7 @@ export const cvData: CVContent = {
   contact: {
     email: 'ser.corum@gmail.com',
     phone: '+49 176 80829512',
-    location: 'Sedanstr. 55a, 42281 Wuppertal',
+    website: 'https://www.kournosenkov.com',
     links: [
       { label: 'GitHub', href: 'https://github.com/corum86' },
       {

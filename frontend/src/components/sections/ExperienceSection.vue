@@ -9,7 +9,10 @@
         :style="{ '--stagger-index': index }"
       >
         <h3>{{ item.role }} - {{ item.company }}</h3>
-        <p>{{ item.start }} {{ t('labels.until') }} {{ item.end }}</p>
+        <p>
+          {{ formatMonthYear(item.start, locale) }} {{ t('labels.until') }}
+          {{ formatMonthYear(item.end, locale) }}
+        </p>
         <p>{{ item.summary }}</p>
         <ul>
           <li v-for="point in item.highlights" :key="point">{{ point }}</li>
@@ -34,8 +37,9 @@ import SectionContainer from '@/components/layout/SectionContainer.vue'
 import TimelinePath from '@/components/svg/TimelinePath.vue'
 import StaggerGroup from '@/components/ui/StaggerGroup.vue'
 import type { ExperienceItem } from '@/types/cv'
+import { formatMonthYear } from '@/utils/formatDate'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 defineProps<{
   items: ExperienceItem[]

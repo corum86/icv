@@ -4,7 +4,6 @@
       <article class="card">
         <p>{{ t('labels.email') }}: <a :href="`mailto:${contact.email}`">{{ contact.email }}</a></p>
         <p v-if="contact.phone">{{ t('labels.phone') }}: <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a></p>
-        <p>{{ t('labels.address') }}: {{ contact.location }}</p>
       </article>
       <article class="card">
         <p v-if="contact.website">

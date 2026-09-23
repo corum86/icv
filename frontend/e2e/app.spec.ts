@@ -12,8 +12,8 @@ test('switches locale via the nav', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('#hero h1')).toBeVisible({ timeout: 15_000 })
 
-  // Default locale is German; the CTA reads "Karte oeffnen" until switched.
-  await expect(page.getByRole('button', { name: 'Karte oeffnen' })).toBeVisible()
+  // Default locale is German; the CTA reads "Karte öffnen" until switched.
+  await expect(page.getByRole('button', { name: 'Karte öffnen' })).toBeVisible()
 
   await page.locator('.locale-switch').getByRole('button', { name: 'EN', exact: true }).click()
 

@@ -5,11 +5,11 @@ import { mount } from '@vue/test-utils'
 import { useActiveSection } from '@/composables/useActiveSection'
 import type { SectionId } from '@/types/cv'
 
-const sectionIds: SectionId[] = ['hero', 'about', 'experience']
+const sectionIds: SectionId[] = ['hero', 'experience', 'projects']
 
 describe('useActiveSection', () => {
   it('uses hash section as initial active id', async () => {
-    window.history.replaceState(null, '', '#about')
+    window.history.replaceState(null, '', '#experience')
 
     const TestHost = defineComponent({
       setup() {
@@ -28,6 +28,6 @@ describe('useActiveSection', () => {
 
     const wrapper = mount(TestHost)
     await nextTick()
-    expect(wrapper.text()).toContain('about')
+    expect(wrapper.text()).toContain('experience')
   })
 })

@@ -5,6 +5,19 @@ import type { SectionId } from '@/types/cv'
 export function useActiveSection(sectionIds: SectionId[], scrollRootRef: Ref<HTMLElement | null>) {
   const activeSection = ref<SectionId>(sectionIds[0] ?? 'hero')
   let observer: IntersectionObserver | null = null
+  let boundRoot: HTMLElement | null = null
+
+  // The last section is often too short to reach the detection band, so reaching
+  // the bottom of the scroll root activates it explicitly.
+  const onScroll = () => {
+    const root = boundRoot
+    const lastId = sectionIds[sectionIds.length - 1]
+    if (root && lastId && root.scrollTop + root.clientHeight >= root.scrollHeight - 2) {
+      if (activeSection.value !== lastId) {
+        setActive(lastId)
+      }
+    }
+  }
 
   const syncHash = (sectionId: SectionId) => {
     if (window.location.hash !== `#${sectionId}`) {
@@ -28,27 +41,20 @@ export function useActiveSection(sectionIds: SectionId[], scrollRootRef: Ref<HTM
       activeSection.value = hashId
     }
 
+    // A thin band ~25% below the top of the viewport: whichever section crosses it
+    // is active, regardless of how tall the section is.
     observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => right.intersectionRatio - left.intersectionRatio)
-
-        if (visible.length > 0) {
-          const topEntry = visible[0]
-          if (!topEntry) {
-            return
-          }
-
-          const id = topEntry.target.getAttribute('id') as SectionId | null
-          if (id && id !== activeSection.value) {
-            setActive(id)
-          }
+        const crossing = entries.find((entry) => entry.isIntersecting)
+        const id = crossing?.target.getAttribute('id') as SectionId | null | undefined
+        if (id && id !== activeSection.value) {
+          setActive(id)
         }
       },
       {
         root,
-        threshold: [0.4, 0.65, 0.9],
+        rootMargin: '-25% 0px -74% 0px',
+        threshold: 0,
       },
     )
 
@@ -58,10 +64,14 @@ export function useActiveSection(sectionIds: SectionId[], scrollRootRef: Ref<HTM
         observer?.observe(section)
       }
     })
+
+    boundRoot = root
+    root.addEventListener('scroll', onScroll, { passive: true })
   })
 
   onBeforeUnmount(() => {
     observer?.disconnect()
+    boundRoot?.removeEventListener('scroll', onScroll)
   })
 
   return {

@@ -41,6 +41,7 @@ export const i18n = createI18n({
 export const setLocale = (locale: AppLocale) => {
   i18n.global.locale.value = locale
   window.localStorage.setItem(LOCALE_STORAGE_KEY, locale)
+  document.documentElement.lang = locale
 }
 
 export const getCurrentLocale = (): AppLocale => {

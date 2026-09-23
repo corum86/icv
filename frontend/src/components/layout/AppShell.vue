@@ -1,6 +1,7 @@
 <template>
   <div class="app-shell">
     <TopNav
+      :brand="brand"
       :sections="sections"
       :active-section="activeSection"
       :locale="locale"
@@ -8,7 +9,7 @@
       @open-map="$emit('openMap')"
       @locale-change="$emit('localeChange', $event)"
     />
-    <div ref="scrollRoot" class="sections-scroll-root" :class="{ 'is-relaxed': relaxedSnap }">
+    <div ref="scrollRoot" class="sections-scroll-root">
       <slot />
     </div>
   </div>
@@ -22,9 +23,9 @@ import type { SectionId } from '@/types/cv'
 import TopNav, { type NavSection } from './TopNav.vue'
 
 defineProps<{
+  brand: string
   sections: readonly NavSection[]
   activeSection: SectionId
-  relaxedSnap: boolean
   locale: AppLocale
 }>()
 

@@ -28,13 +28,13 @@ Two independently deployed apps with no shared code: a static Vue frontend (Verc
 
 `App.vue` is the composition root. On mount it calls two separate, unrelated network paths that must not be confused:
 - `useProfileBootstrap()` (frontend/src/composables/useProfileBootstrap.ts) fetches `/api/profile` from a **hardcoded** URL (`https://icv-9zu5.onrender.com/`), not `VITE_BACKEND_URL`. This only drives the loading-screen name/title.
-- `cvContentService.getCvContent(locale)` (frontend/src/services/cvContentService.ts) fetches `/api/cv?lang=<locale>` from `VITE_BACKEND_URL` (falls back to `http://localhost:8000`), and on any failure falls back to the bundled `frontend/src/data/cvData.ts`. This drives all section content and re-fetches whenever the locale changes.
+- `cvContentService.getCvContent(locale)` (frontend/src/services/cvContentService.ts) fetches `/api/cv?lang=<locale>` from `VITE_BACKEND_URL` (falls back to `http://localhost:8000`), and on any failure falls back to the bundled per-locale data in `frontend/src/data/cvData.ts` (`cvDataByLocale`). This drives all section content and re-fetches whenever the locale changes.
 
 `CvContentService` is an interface with two implementations (`backendCvContentService`, `staticCvContentService`); `backendCvContentService` is the default export and the only one wired into `App.vue`.
 
 Section components (`components/sections/*`) are presentation-only and receive their content as props from `App.vue`'s `cvContent` ref — they don't fetch data themselves. Place/map data (`data/places.ts`, `PlaceMarker[]`) is separate from CV content and feeds `CVMapModal.vue`, which is lazy-loaded via `defineAsyncComponent`.
 
-Scrolling/navigation behavior (active-section highlighting, snap-scroll, reduced-motion handling) lives in `composables/useActiveSection.ts` and `composables/useSnapScroll.ts`, both driven off a single `scrollRootRef` set by `AppShell` via a `root-mounted` emit.
+Scrolling is free/native (no snap-to-section). Active-section highlighting for nav is handled by `composables/useActiveSection.ts` via an `IntersectionObserver` on a single `scrollRootRef` set by `AppShell` via a `root-mounted` emit; clicking a nav link scrolls to that section with a plain `scrollIntoView` call in `App.vue`'s `handleNavigate`.
 
 ### i18n
 

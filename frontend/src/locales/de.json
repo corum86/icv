@@ -1,19 +1,19 @@
 {
   "nav": {
     "ariaLabel": "Hauptnavigation",
-    "openMap": "Karte oeffnen",
+    "localeAriaLabel": "Sprache",
+    "openMap": "Karte öffnen",
+    "backToTop": "Nach oben",
     "locale": {
       "de": "DE",
       "en": "EN"
     },
     "sections": {
       "hero": "Profil",
-      "about": "Ueber mich",
       "experience": "Erfahrung",
       "projects": "Projekte",
-      "skills": "Skills",
-      "education": "Ausbildung",
-      "contact": "Kontakt"
+      "skills": "Kompetenzen",
+      "education": "Ausbildung"
     }
   },
   "status": {
@@ -21,28 +21,26 @@
     "profileEndpointUnavailable": "Profil-Endpunkt aktuell nicht erreichbar"
   },
   "sections": {
-    "hero": "Profil",
-    "about": "Ueber mich",
     "experience": "Berufserfahrung",
     "projects": "Projekte",
     "skills": "Kompetenzen",
-    "education": "Ausbildung",
-    "contact": "Kontakt"
+    "education": "Ausbildung & Zertifikate",
+    "keySkills": "Kernkompetenzen",
+    "languages": "Sprachen"
   },
   "actions": {
+    "showMore": "{n} weitere anzeigen",
+    "showLess": "Weniger anzeigen",
     "showOnMap": "Auf Karte anzeigen",
-    "showLocation": "Ort anzeigen",
-    "location": "Ort",
-    "projectLink": "Projektlink",
-    "openPage": "Seite oeffnen",
-    "close": "Schliessen"
+    "openPage": "Website ansehen",
+    "print": "PDF / Drucken",
+    "close": "Schließen"
   },
   "labels": {
-    "until": "bis",
-    "skillAreas": "Kompetenzbereiche",
+    "yearsExperience": "{n}+ Jahre Berufserfahrung",
+    "currentlyAt": "Aktuell bei {company}",
     "email": "E-Mail",
     "phone": "Telefon",
-    "address": "Adresse",
     "website": "Website"
   },
   "map": {

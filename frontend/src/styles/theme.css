@@ -1,33 +1,51 @@
-/* Scroll-driven background: written by useScrollGradient (0 at top, 1 at bottom).
-   Registering it lets the browser transition intermediate values, so large
-   jumps (nav clicks) ease instead of snapping. */
-@property --scroll-progress {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 :root {
-  --font-display: 'Fraunces', 'Times New Roman', serif;
-  --font-body: 'Space Grotesk', 'Segoe UI', sans-serif;
+  color-scheme: light dark;
 
-  --color-bg: #080b14;
-  --color-bg-soft: #0f1524;
-  --color-surface: #131b2e;
-  --color-surface-strong: #1b2742;
-  --color-border: #2e426f;
-  --color-text: #edf2ff;
-  --color-text-muted: #b4bfd9;
-  --color-accent: #f4b942;
-  --color-accent-alt: #46d0c9;
-  --color-danger: #ff7a7a;
+  --font-body:
+    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
-  --shadow-soft: 0 12px 30px rgba(4, 8, 16, 0.36);
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f4f5;
+  --color-border: #e4e4e7;
+  --color-text: #18181b;
+  --color-text-muted: #52525b;
+  --color-text-subtle: #71717a;
+  --color-accent: #2563eb;
+  --color-accent-soft: rgba(37, 99, 235, 0.08);
+  --color-on-accent: #ffffff;
+  --color-danger: #dc2626;
 
-  transition: --scroll-progress 260ms linear;
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --nav-height: 56px;
+  --content-width: 880px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0c0c0e;
+    --color-surface: #151518;
+    --color-surface-muted: #1c1c20;
+    --color-border: #2a2a30;
+    --color-text: #f4f4f5;
+    --color-text-muted: #b4b4bc;
+    --color-text-subtle: #8b8b94;
+    --color-accent: #6ea0ff;
+    --color-accent-soft: rgba(110, 160, 255, 0.12);
+    --color-on-accent: #0c0c0e;
+    --color-danger: #f87171;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
 }
 
 html,
@@ -38,37 +56,26 @@ body,
 
 body {
   margin: 0;
+  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  /* Colour + focal point of each glow are mixed between a "top" and "bottom"
-     state by --scroll-progress, so the background drifts as the page scrolls. */
-  --glow-teal: color-mix(
-    in oklab,
-    rgba(70, 208, 201, 0.16),
-    rgba(146, 110, 245, 0.2) calc(var(--scroll-progress) * 100%)
-  );
-  --glow-amber: color-mix(
-    in oklab,
-    rgba(244, 185, 66, 0.14),
-    rgba(70, 128, 220, 0.17) calc(var(--scroll-progress) * 100%)
-  );
-  --base-top: color-mix(in oklab, #070a12, #0a0f1e calc(var(--scroll-progress) * 100%));
-  --base-bottom: color-mix(in oklab, #0b1120, #131a30 calc(var(--scroll-progress) * 100%));
-
-  background:
-    radial-gradient(
-      circle at calc(20% + 34% * var(--scroll-progress)) calc(20% + 16% * var(--scroll-progress)),
-      var(--glow-teal),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at calc(80% - 30% * var(--scroll-progress)) calc(12% + 46% * var(--scroll-progress)),
-      var(--glow-amber),
-      transparent 38%
-    ),
-    linear-gradient(180deg, var(--base-top) 0%, var(--base-top) 35%, var(--base-bottom) 100%);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: var(--color-accent-alt);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
 }

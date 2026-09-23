@@ -20,9 +20,9 @@
         {{ t('status.profileEndpointUnavailable') }}: {{ error }}
       </p>
       <AppShell
+        :brand="cvContent.hero.name"
         :sections="navSections"
         :active-section="activeSection"
-        :relaxed-snap="relaxedSnap"
         :locale="locale"
         @navigate="handleNavigate"
         @open-map="openMap"
@@ -31,17 +31,20 @@
       >
         <HeroSection
           :hero="cvContent.hero"
+          :contact="cvContent.contact"
+          :languages="cvContent.languages"
+          :current-position="currentPosition"
           :profile-name="profile?.name"
           :profile-title="profile?.title"
-          @open-map="openMap"
-          @jump-to-projects="handleNavigate('projects')"
         />
-        <AboutSection :about="cvContent.about" />
         <ExperienceSection :items="cvContent.experience" @open-map-at="openMapAt" />
-        <ProjectsSection :projects="cvContent.projects" @open-map-at="openMapAt" />
+        <ProjectsSection :projects="cvContent.projects" />
         <SkillsSection :skills="cvContent.skills" />
         <EducationSection :items="cvContent.education" @open-map-at="openMapAt" />
-        <ContactSection :contact="cvContent.contact" />
+        <footer class="cv-footer">
+          © {{ currentYear }} {{ cvContent.hero.name }} ·
+          <a :href="`mailto:${cvContent.contact.email}`">{{ cvContent.contact.email }}</a>
+        </footer>
       </AppShell>
 
       <component
@@ -61,8 +64,6 @@ import { useI18n } from 'vue-i18n'
 
 import { AppShell } from '@/components/layout'
 import {
-  AboutSection,
-  ContactSection,
   EducationSection,
   ExperienceSection,
   HeroSection,
@@ -70,45 +71,32 @@ import {
   SkillsSection,
 } from '@/components/sections'
 import type { NavSection } from '@/components/layout/TopNav.vue'
-import {
-  useActiveSection,
-  useProfileBootstrap,
-  useScrollGradient,
-  useSnapScroll,
-} from '@/composables'
+import { useActiveSection, useProfileBootstrap } from '@/composables'
 import { cvContentService } from '@/services'
-import { cvData } from '@/data/cvData'
+import { cvDataByLocale } from '@/data/cvData'
 import { places } from '@/data/places'
 import { getCurrentLocale, setLocale, type AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker, SectionId } from '@/types/cv'
+import { isOngoing } from '@/utils/formatDate'
 import { Analytics } from '@vercel/analytics/vue'
 
-const sectionIds: SectionId[] = [
-  'hero',
-  'about',
-  'experience',
-  'projects',
-  'skills',
-  'education',
-  'contact',
-]
+const sectionIds: SectionId[] = ['hero', 'experience', 'projects', 'skills', 'education']
 
 const { t } = useI18n()
 const locale = ref<AppLocale>(getCurrentLocale())
 
-const navSections = computed<NavSection[]>(() => [
-  { id: 'hero', label: t('nav.sections.hero') },
-  { id: 'about', label: t('nav.sections.about') },
-  { id: 'experience', label: t('nav.sections.experience') },
-  { id: 'projects', label: t('nav.sections.projects') },
-  { id: 'skills', label: t('nav.sections.skills') },
-  { id: 'education', label: t('nav.sections.education') },
-  { id: 'contact', label: t('nav.sections.contact') },
-])
+// The header itself is reached via the brand button, so it has no nav link.
+const navSections = computed<NavSection[]>(() =>
+  sectionIds.filter((id) => id !== 'hero').map((id) => ({ id, label: t(`nav.sections.${id}`) })),
+)
 
 const { profile, loading, error, firstLoadingGif, secondLoadingGif, useSecondGif } =
   useProfileBootstrap()
-const cvContent = ref<CVContent>(cvData)
+const cvContent = ref<CVContent>(cvDataByLocale[locale.value])
+const currentPosition = computed(() =>
+  cvContent.value.experience.find((item) => isOngoing(item.end)),
+)
+const currentYear = new Date().getFullYear()
 const markers = ref<PlaceMarker[]>(places)
 const mapOpen = ref(false)
 const focusedMarkerId = ref<string | undefined>(undefined)
@@ -116,15 +104,6 @@ const scrollRootRef = ref<HTMLElement | null>(null)
 const isReducedMotion = ref(false)
 
 const { activeSection, setActive } = useActiveSection(sectionIds, scrollRootRef)
-const { isStrictSnap, scrollToSection } = useSnapScroll({
-  sectionIds,
-  rootRef: scrollRootRef,
-  isReducedMotion,
-})
-
-useScrollGradient(scrollRootRef)
-
-const relaxedSnap = computed(() => !isStrictSnap.value)
 
 const CVMapModalAsync = defineAsyncComponent(() => import('@/components/map/CVMapModal.vue'))
 
@@ -133,11 +112,10 @@ const setScrollRoot = (root: HTMLElement) => {
 }
 
 const handleNavigate = (sectionId: SectionId) => {
-  const index = sectionIds.findIndex((id) => id === sectionId)
-  if (index >= 0) {
-    scrollToSection(index)
-    setActive(sectionId)
-  }
+  const root = scrollRootRef.value
+  const section = root?.querySelector<HTMLElement>(`#${sectionId}`)
+  section?.scrollIntoView({ behavior: isReducedMotion.value ? 'auto' : 'smooth', block: 'start' })
+  setActive(sectionId)
 }
 
 const openMap = () => {
@@ -168,11 +146,6 @@ onMounted(async () => {
 
   await loadCvContent()
   markers.value = await cvContentService.getPlaceMarkers()
-
-  const hashTarget = window.location.hash.replace('#', '') as SectionId
-  if (hashTarget) {
-    handleNavigate(hashTarget)
-  }
 })
 
 watch(locale, async () => {

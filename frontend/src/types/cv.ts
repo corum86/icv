@@ -1,25 +1,20 @@
-export type SectionId =
-  | 'hero'
-  | 'about'
-  | 'experience'
-  | 'projects'
-  | 'skills'
-  | 'education'
-  | 'locations'
-  | 'contact'
+export type SectionId = 'hero' | 'experience' | 'projects' | 'skills' | 'education'
 
+// Fields added with the one-page header layout are optional so documents that
+// were seeded before it (no location/keySkills/languages) still render.
 export interface HeroContent {
   name: string
   role: string
-  tagline: string
   summary: string
-  primaryCtaLabel: string
-  secondaryCtaLabel: string
+  location?: string
+  /** "mm.yyyy" start of the professional career, used for the years-of-experience fact. */
+  careerStart?: string
+  keySkills?: string[]
 }
 
-export interface AboutContent {
-  title: string
-  paragraphs: string[]
+export interface LanguageSkill {
+  language: string
+  level: string
 }
 
 export interface ExperienceItem {
@@ -28,7 +23,8 @@ export interface ExperienceItem {
   role: string
   start: string
   end: string
-  summary: string
+  location?: string
+  summary?: string
   highlights: string[]
   placeId?: string
 }
@@ -53,8 +49,9 @@ export interface EducationItem {
   institution: string
   program: string
   start: string
-  end: string
-  details: string
+  end?: string
+  location?: string
+  details?: string
   placeId?: string
 }
 
@@ -82,10 +79,10 @@ export interface PlaceMarker {
 
 export interface CVContent {
   hero: HeroContent
-  about: AboutContent
   experience: ExperienceItem[]
   projects: ProjectItem[]
   skills: SkillCategory[]
   education: EducationItem[]
+  languages?: LanguageSkill[]
   contact: ContactContent
 }

@@ -1,38 +1,22 @@
 <template>
   <SectionContainer id="projects" :title="t('sections.projects')">
-    <ProjectConnector :projects="projects" />
-    <div class="grid-two projects-grid">
+    <div class="card-grid">
       <article v-for="project in projects" :key="project.id" class="card">
-        <h3>{{ project.name }}</h3>
-        <p>{{ project.description }}</p>
-        <p>{{ project.technologies.join(' / ') }}</p>
-        <div>
-          <a v-if="project.link" :href="project.link" target="_blank" rel="noreferrer">{{
-            t('actions.projectLink')
-          }}</a>
-          <button
-            v-if="project.placeId"
-            class="inline-action"
-            type="button"
-            @click="$emit('openMapAt', project.placeId)"
-          >
-            {{ t('actions.location') }}
-          </button>
-        </div>
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+        <ul v-if="project.technologies.length" class="chip-list">
+          <li v-for="tech in project.technologies" :key="tech" class="chip">{{ tech }}</li>
+        </ul>
+        <a
+          v-if="project.link"
+          class="project-link"
+          :href="project.link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {{ t('actions.openPage') }} <AppIcon name="external" />
+        </a>
       </article>
-    </div>
-    <div class="card projects-grid">
-      <previewbox-article
-        url="https://paidopsy-trikala.gr/"
-        title="Webpage for a psychiatric practice in Greece."
-        description="Psychiatry and psychotherapy for children and adolescents. Together we can find solutions and discover new perspectives for the future."
-        imageUrl="https://doctor-online.gr/wp-content/uploads/2020/09/12666.jpg"
-        imageAlt="Practice facade with sign 'Paidopsy Trikala' and a tree in front."
-        author="Sergkei Kournosenkov"
-        target="_blank"
-        rel="nofollow"
-        :readMoreBtnText="t('actions.openPage')"
-      />
     </div>
   </SectionContainer>
 </template>
@@ -41,7 +25,7 @@
 import { useI18n } from 'vue-i18n'
 
 import SectionContainer from '@/components/layout/SectionContainer.vue'
-import ProjectConnector from '@/components/svg/ProjectConnector.vue'
+import AppIcon from '@/components/ui/AppIcon.vue'
 import type { ProjectItem } from '@/types/cv'
 
 const { t } = useI18n()
@@ -49,16 +33,32 @@ const { t } = useI18n()
 defineProps<{
   projects: ProjectItem[]
 }>()
-
-defineEmits<{
-  openMapAt: [placeId: string]
-}>()
 </script>
 
 <style scoped>
-.projects-grid {
-  row-gap: 24px;
-  column-gap: 24px;
-  margin-bottom: 24px;
+.project-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-description {
+  flex: 1;
+  margin: 0;
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.project-link .app-icon {
+  width: 13px;
+  height: 13px;
 }
 </style>

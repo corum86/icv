@@ -19,7 +19,6 @@
     "prepare": "cd .. && husky frontend/.husky"
   },
   "dependencies": {
-    "@mariusbongarts/previewbox": "^0.0.24",
     "@types/leaflet": "^1.9.21",
     "@vercel/analytics": "^2.0.1",
     "@vue-leaflet/vue-leaflet": "^0.10.1",

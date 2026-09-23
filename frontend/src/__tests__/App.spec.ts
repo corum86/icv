@@ -49,6 +49,7 @@ describe('App', () => {
     await nextTick()
 
     expect(wrapper.text()).toContain('Berufserfahrung')
-    expect(wrapper.text()).toContain('Kontakt')
+    expect(wrapper.text()).toContain('Kernkompetenzen')
+    expect(wrapper.text()).toContain('ser.corum@gmail.com')
   })
 })

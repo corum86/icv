@@ -9,63 +9,85 @@
       "hero": {
         "name": "Sergkei Kournosenkov",
         "role": "Web- und Softwareentwickler",
-        "tagline": "Full-Stack-Entwicklung mit Schwerpunkt auf performanten Frontends.",
-        "summary": "Seit mehreren Jahren entwickle ich skalierbare Webanwendungen, integriere APIs und verbessere kontinuierlich Qualität, Wartbarkeit und Nutzererlebnis.",
-        "primaryCtaLabel": "Karrierekarte öffnen",
-        "secondaryCtaLabel": "Zu den Projekten"
-      },
-      "about": {
-        "title": "Über mich",
-        "paragraphs": [
-          "Ich arbeite als Full-Stack Software Engineer mit starkem Fokus auf moderne Frontend-Architekturen, saubere Schnittstellen und robuste Backend-Integration.",
-          "Mein Schwerpunkt liegt auf Angular, React, SQL-Optimierung, automatisierten Tests und einer kollaborativen Entwicklungsweise mit klaren Code-Standards."
+        "location": "Wuppertal",
+        "careerStart": "11.2014",
+        "summary": "Erfahrener Full-Stack Software Engineer mit starkem Fokus auf Frontend-Entwicklung und moderne Webanwendungen. Nachweisliche Erfahrung in der Leitung technischer Teams, der Entwicklung dynamischer Single-Page-Applications und der Integration KI-gestützter Entwicklungswerkzeuge. Leidenschaft für Clean Code, Performance-Optimierung und skalierbare Architekturen.",
+        "keySkills": [
+          "Angular",
+          "TypeScript",
+          "React",
+          "Java / Spring Boot",
+          "PHP",
+          "MySQL / PostgreSQL",
+          "Mendix",
+          "Claude Code / Copilot"
         ]
       },
       "experience": [
         {
           "id": "exp-ecs",
           "company": "ECS GmbH",
-          "role": "Software Engineer - Full Stack (Schwerpunkt Frontend)",
+          "role": "Software Engineer – Full-Stack (Schwerpunkt Frontend)",
           "start": "04.2019",
           "end": "Heute",
-          "summary": "Neuentwicklung und Wartung komplexer SPAs, API-Anbindung sowie Performance- und Qualitätsoptimierung über den gesamten Entwicklungszyklus.",
+          "location": "Wuppertal",
           "highlights": [
-            "Entwicklung responsiver Oberflächen mit HTML5, SASS/LESS sowie Bootstrap und Tailwind.",
-            "Anbindung von RESTful APIs und enge Abstimmung mit Backend-Teams, unter anderem mit Spring Boot.",
-            "Einführung von Clean-Code-Richtlinien, SonarQube, ESLint und Prettier zur Verbesserung der Wartbarkeit.",
-            "Aufbau und Umsetzung automatisierter Unit-Tests in Frontend und Backend zur Reduktion von Regressionen.",
-            "Fachliche Unterstützung der Projektleitung bei Technologie- und Architekturentscheidungen."
+            "Neuentwicklung und Wartung komplexer Single-Page-Applications mit Angular (sowie React und Flutter).",
+            "KI-gestützte Softwareentwicklung mit Agentic Coding (Claude Code, GitHub Copilot, Gemini/Antigravity).",
+            "Analyse und Performance-Optimierung komplexer SQL-Abfragen (MySQL/PostgreSQL) zur Reduktion von Ladezeiten in datenintensiven Anwendungen.",
+            "Anbindung von RESTful APIs und enge Zusammenarbeit mit dem Backend-Team (z. B. Java Spring Boot).",
+            "Umsetzung responsiver Designs mit HTML5, SASS/LESS und Bootstrap/Tailwind für optimale UX auf allen Geräten.",
+            "Optimierung der Anwendungsperformance und Sicherstellung der Cross-Browser-Kompatibilität.",
+            "Entwicklung von Low-Code-Lösungen mit Mendix zur schnellen Bereitstellung von Business-Apps.",
+            "Hohe Codequalität durch Clean-Code-Richtlinien und statische Codeanalyse (SonarQube, ESLint, Prettier).",
+            "Konzeption und Umsetzung automatisierter Unit-Tests (Karma/Jasmine, Vitest) zur Erhöhung der Testabdeckung.",
+            "Regelmäßige Code-Reviews zur Qualitätssicherung und zum Wissensaustausch im Team.",
+            "Fachliche Beratung von Projektleitung und Stakeholdern bei Technologie- und Architekturentscheidungen.",
+            "Förderung einer kollaborativen Entwicklerkultur und Anleitung von Junior-Entwicklern bei komplexen Problemen."
           ],
           "placeId": "place-wuppertal"
         },
         {
           "id": "exp-nonomella",
           "company": "Nonomella GmbH",
-          "role": "Web-Software Entwickler und Leitung des IT-Bereichs",
+          "role": "Web-Softwareentwickler und Leitung IT",
           "start": "04.2017",
           "end": "03.2019",
-          "summary": "Technische Leitung des IT-Bereichs, Weiterentwicklung der E-Commerce-Landschaft und Full-Stack-Umsetzung neuer Webshop-Funktionen.",
+          "location": "Wuppertal",
           "highlights": [
-            "Koordination interner und externer Entwicklungsressourcen.",
-            "Betreuung und Ausbau von JTL Shop und JTL Wawi inklusive Schnittstellenmanagement.",
-            "Planung und Umsetzung der IT-Infrastruktur für das operative Geschäft.",
-            "Feature-Entwicklung im Webshop-Umfeld mit PHP und MySQL."
+            "Technische Leitung der IT-Abteilung sowie Koordination interner und externer Entwicklungsressourcen.",
+            "Betreuung und Weiterentwicklung der E-Commerce-Landschaft (JTL Shop & JTL Wawi) inklusive Schnittstellenmanagement.",
+            "Planung und Umsetzung der IT-Infrastrukturstrategie für das operative Geschäft.",
+            "Full-Stack-Entwicklung von Webshop-Features mit PHP und MySQL."
           ],
           "placeId": "place-wuppertal"
         },
         {
           "id": "exp-koszewa",
           "company": "Koszewa & Koszewa GbR",
-          "role": "Web- und Softwareentwickler (Frontend, Backend, interne Systeme)",
+          "role": "Web- und Softwareentwickler",
           "start": "11.2014",
           "end": "03.2017",
-          "summary": "Konzeption und Umsetzung dynamischer Webanwendungen sowie interner Systeme zur Prozessautomatisierung.",
+          "location": "Wuppertal",
           "highlights": [
-            "Entwicklung mit jQuery, Bootstrap, HTML, PHP, MySQL und C#.",
-            "Aufbau und Pflege relationaler Datenbankstrukturen sowie komplexer SQL-Abfragen.",
+            "Konzeption und Umsetzung dynamischer Websites und Anwendungen mit jQuery, Bootstrap, HTML, PHP, MySQL und C#.",
+            "Entwicklung und Pflege interner Verwaltungssysteme zur Automatisierung von Geschäftsprozessen.",
+            "Entwurf relationaler Datenbankstrukturen und komplexer SQL-Abfragen.",
             "Second-Level-Support und Fehleranalyse für bestehende Softwarelösungen."
           ],
           "placeId": "place-wuppertal"
+        },
+        {
+          "id": "exp-refuel",
+          "company": "Refuel / InSpot",
+          "role": "Technischer Support",
+          "start": "2006",
+          "end": "2011",
+          "location": "Ioannina, Griechenland",
+          "highlights": [
+            "Technischer Support und Fehlerbehebung für Internetcafé-Systeme."
+          ],
+          "placeId": "place-ioannina"
         }
       ],
       "projects": [
@@ -79,8 +101,7 @@
             "TypeScript",
             "REST APIs",
             "Spring Boot"
-          ],
-          "placeId": "place-wuppertal"
+          ]
         },
         {
           "id": "prj-lowcode",
@@ -91,8 +112,7 @@
             "SQL",
             "Integrationen",
             "Testautomatisierung"
-          ],
-          "placeId": "place-wuppertal"
+          ]
         },
         {
           "id": "prj-ecommerce",
@@ -103,63 +123,103 @@
             "MySQL",
             "JTL Shop",
             "JTL Wawi"
-          ],
-          "placeId": "place-wuppertal"
+          ]
+        },
+        {
+          "id": "prj-paidopsy",
+          "name": "Website einer kinderpsychiatrischen Praxis",
+          "description": "Webauftritt für eine Praxis für Kinder- und Jugendpsychiatrie und -psychotherapie in Trikala, Griechenland.",
+          "technologies": [],
+          "link": "https://paidopsy-trikala.gr/"
         }
       ],
       "skills": [
         {
           "id": "skills-front",
-          "label": "Frontend",
+          "label": "Frontend & UI",
           "skills": [
             "JavaScript",
+            "TypeScript",
             "Angular",
             "React",
             "Ajax",
             "jQuery",
             "HTML",
             "CSS",
-            "SCSS",
+            "SCSS/SASS",
             "LESS",
-            "SASS"
+            "Bootstrap",
+            "Tailwind",
+            "Flutter/Dart",
+            "ExtJS 3"
           ]
         },
         {
           "id": "skills-backend",
-          "label": "Backend & Datenbanken",
+          "label": "Backend & Sprachen",
           "skills": [
-            "PHP (OOP, Smarty)",
+            "PHP (OOP, Smarty 2/3/4)",
             "Java (Spring Boot)",
             "C#",
+            "Objective-C",
+            "C++",
+            "Matlab"
+          ]
+        },
+        {
+          "id": "skills-db",
+          "label": "Datenbanken",
+          "skills": [
             "MySQL",
             "PostgreSQL",
             "SQL Server (T-SQL)"
           ]
         },
         {
-          "id": "skills-platform",
-          "label": "Plattformen & Tools",
+          "id": "skills-api",
+          "label": "APIs & Architektur",
           "skills": [
-            "Mendix",
-            "GitHub",
-            "GitLab",
-            "Gitea",
-            "Subversion",
-            "Tailwind",
-            "Bootstrap",
-            "RESTful/SOAP APIs"
+            "RESTful APIs",
+            "SOAP APIs",
+            "Facebook & Instagram APIs",
+            "Google Plattformen & APIs"
           ]
         },
         {
-          "id": "skills-additional",
-          "label": "Weitere Kenntnisse",
+          "id": "skills-quality",
+          "label": "Qualität & KI-Tools",
           "skills": [
-            "Flutter/Dart",
-            "Google APIs",
-            "SAP (Grundkenntnisse)",
-            "Salesforce (Grundkenntnisse)",
-            "Unity",
-            "Unreal 4"
+            "Claude Code",
+            "GitHub Copilot",
+            "Gemini",
+            "SonarQube",
+            "ESLint",
+            "Prettier",
+            "Karma/Jasmine",
+            "Vitest"
+          ]
+        },
+        {
+          "id": "skills-vcs",
+          "label": "DevOps & Versionskontrolle",
+          "skills": [
+            "GitHub",
+            "GitLab",
+            "Gitea",
+            "Subversion"
+          ]
+        },
+        {
+          "id": "skills-platform",
+          "label": "Plattformen & Tools",
+          "skills": [
+            "Mendix (Low-Code)",
+            "JTL Wawi",
+            "JTL Shop",
+            "SAP",
+            "Salesforce",
+            "MS Office",
+            "Adobe Photoshop"
           ]
         }
       ],
@@ -170,32 +230,55 @@
           "program": "B.Sc. Computer Engineering (Software Engineering)",
           "start": "2008",
           "end": "2015",
-          "details": "Studium mit Schwerpunkt Software Engineering und fundierter Basis in Systementwicklung.",
           "placeId": "place-ioannina"
         },
         {
           "id": "edu-telecom",
           "institution": "Berufsbildungsinstitut Ioannina",
-          "program": "Telekommunikation & Netzwerke",
+          "program": "Berufsausbildung Telekommunikation & Netzwerke",
           "start": "2006",
           "end": "2007",
-          "details": "Praxisnahe Ausbildung im Bereich Netzwerke und Kommunikationstechnik.",
+          "location": "Ioannina, Griechenland",
           "placeId": "place-ioannina"
+        },
+        {
+          "id": "edu-ecdl",
+          "institution": "European Computer Driving Licence (ECDL)",
+          "program": "Zertifikat",
+          "start": "2006",
+          "location": "Athen"
         },
         {
           "id": "edu-abitur",
           "institution": "Griechisches Lyzeum Nürnberg",
           "program": "Abitur",
           "start": "2004",
-          "end": "2004",
-          "details": "Allgemeine Hochschulreife.",
+          "location": "Nürnberg",
           "placeId": "place-nuernberg"
+        }
+      ],
+      "languages": [
+        {
+          "language": "Griechisch",
+          "level": "Muttersprache"
+        },
+        {
+          "language": "Englisch",
+          "level": "C1"
+        },
+        {
+          "language": "Deutsch",
+          "level": "B2"
+        },
+        {
+          "language": "Russisch",
+          "level": "sehr gut"
         }
       ],
       "contact": {
         "email": "ser.corum@gmail.com",
         "phone": "+49 176 80829512",
-        "location": "Sedanstr. 55a, 42281 Wuppertal",
+        "website": "https://www.kournosenkov.com",
         "links": [
           {
             "label": "GitHub",
@@ -211,158 +294,218 @@
     "en": {
       "hero": {
         "name": "Sergkei Kournosenkov",
-        "role": "Web- und Softwareentwickler",
-        "tagline": "Full-Stack-Entwicklung mit Schwerpunkt auf performanten Frontends.",
-        "summary": "Seit mehreren Jahren entwickle ich skalierbare Webanwendungen, integriere APIs und verbessere kontinuierlich Qualität, Wartbarkeit und Nutzererlebnis.",
-        "primaryCtaLabel": "Karrierekarte öffnen",
-        "secondaryCtaLabel": "Zu den Projekten"
-      },
-      "about": {
-        "title": "Über mich",
-        "paragraphs": [
-          "Ich arbeite als Full-Stack Software Engineer mit starkem Fokus auf moderne Frontend-Architekturen, saubere Schnittstellen und robuste Backend-Integration.",
-          "Mein Schwerpunkt liegt auf Angular, React, SQL-Optimierung, automatisierten Tests und einer kollaborativen Entwicklungsweise mit klaren Code-Standards."
+        "role": "Web and Software Developer",
+        "location": "Wuppertal, Germany",
+        "careerStart": "11.2014",
+        "summary": "Experienced Full-Stack Software Engineer with a strong focus on frontend development and modern web applications. Proven track record of leading technical teams, building dynamic single-page applications, and integrating AI-powered development tools. Passionate about clean code, performance optimization, and scalable architectures.",
+        "keySkills": [
+          "Angular",
+          "TypeScript",
+          "React",
+          "Java / Spring Boot",
+          "PHP",
+          "MySQL / PostgreSQL",
+          "Mendix",
+          "Claude Code / Copilot"
         ]
       },
       "experience": [
         {
           "id": "exp-ecs",
           "company": "ECS GmbH",
-          "role": "Software Engineer - Full Stack (Schwerpunkt Frontend)",
+          "role": "Software Engineer – Full-Stack (Frontend Focus)",
           "start": "04.2019",
-          "end": "Heute",
-          "summary": "Neuentwicklung und Wartung komplexer SPAs, API-Anbindung sowie Performance- und Qualitätsoptimierung über den gesamten Entwicklungszyklus.",
+          "end": "Present",
+          "location": "Wuppertal",
           "highlights": [
-            "Entwicklung responsiver Oberflächen mit HTML5, SASS/LESS sowie Bootstrap und Tailwind.",
-            "Anbindung von RESTful APIs und enge Abstimmung mit Backend-Teams, unter anderem mit Spring Boot.",
-            "Einführung von Clean-Code-Richtlinien, SonarQube, ESLint und Prettier zur Verbesserung der Wartbarkeit.",
-            "Aufbau und Umsetzung automatisierter Unit-Tests in Frontend und Backend zur Reduktion von Regressionen.",
-            "Fachliche Unterstützung der Projektleitung bei Technologie- und Architekturentscheidungen."
+            "New development and maintenance of complex single-page applications with Angular (as well as React and Flutter).",
+            "AI-powered software development with agentic coding (Claude Code, GitHub Copilot, Gemini/Antigravity).",
+            "Analysis and performance optimization of complex SQL queries (MySQL/PostgreSQL) to reduce loading times in data-intensive applications.",
+            "Connecting RESTful APIs to the frontend in close cooperation with the backend team (e.g. Java Spring Boot).",
+            "Responsive designs with HTML5, SASS/LESS and Bootstrap/Tailwind for an optimal UX on all devices.",
+            "Optimizing application performance and ensuring cross-browser compatibility.",
+            "Developing low-code solutions on the Mendix platform to deploy business apps quickly.",
+            "High code quality through clean code guidelines and static code analysis (SonarQube, ESLint, Prettier).",
+            "Design and implementation of automated unit tests (Karma/Jasmine, Vitest) to increase test coverage.",
+            "Regular code reviews for quality assurance and knowledge exchange within the team.",
+            "Advising project management and stakeholders on technology and architecture decisions.",
+            "Promoting a collaborative developer culture and guiding junior developers on complex problems."
           ],
           "placeId": "place-wuppertal"
         },
         {
           "id": "exp-nonomella",
           "company": "Nonomella GmbH",
-          "role": "Web-Software Entwickler und Leitung des IT-Bereichs",
+          "role": "Web Software Developer and Head of IT",
           "start": "04.2017",
           "end": "03.2019",
-          "summary": "Technische Leitung des IT-Bereichs, Weiterentwicklung der E-Commerce-Landschaft und Full-Stack-Umsetzung neuer Webshop-Funktionen.",
+          "location": "Wuppertal",
           "highlights": [
-            "Koordination interner und externer Entwicklungsressourcen.",
-            "Betreuung und Ausbau von JTL Shop und JTL Wawi inklusive Schnittstellenmanagement.",
-            "Planung und Umsetzung der IT-Infrastruktur für das operative Geschäft.",
-            "Feature-Entwicklung im Webshop-Umfeld mit PHP und MySQL."
+            "Technical management of the IT department and coordination of internal and external development resources.",
+            "Support and further development of the e-commerce landscape (JTL Shop & JTL Wawi) including interface management.",
+            "Planning and implementation of the IT infrastructure strategy for the operational business.",
+            "Full-stack development of webshop features with PHP and MySQL."
           ],
           "placeId": "place-wuppertal"
         },
         {
           "id": "exp-koszewa",
           "company": "Koszewa & Koszewa GbR",
-          "role": "Web- und Softwareentwickler (Frontend, Backend, interne Systeme)",
+          "role": "Web and Software Developer",
           "start": "11.2014",
           "end": "03.2017",
-          "summary": "Konzeption und Umsetzung dynamischer Webanwendungen sowie interner Systeme zur Prozessautomatisierung.",
+          "location": "Wuppertal",
           "highlights": [
-            "Entwicklung mit jQuery, Bootstrap, HTML, PHP, MySQL und C#.",
-            "Aufbau und Pflege relationaler Datenbankstrukturen sowie komplexer SQL-Abfragen.",
-            "Second-Level-Support und Fehleranalyse für bestehende Softwarelösungen."
+            "Conception and implementation of dynamic websites and applications with jQuery, Bootstrap, HTML, PHP, MySQL and C#.",
+            "Development and maintenance of internal management systems to automate business processes.",
+            "Design of relational database structures and complex SQL queries.",
+            "Second-level support and error analysis for existing software solutions."
           ],
           "placeId": "place-wuppertal"
+        },
+        {
+          "id": "exp-refuel",
+          "company": "Refuel / InSpot",
+          "role": "Technical Support Staff",
+          "start": "2006",
+          "end": "2011",
+          "location": "Ioannina, Greece",
+          "highlights": [
+            "Technical support and troubleshooting for internet café systems."
+          ],
+          "placeId": "place-ioannina"
         }
       ],
       "projects": [
         {
           "id": "prj-spa",
-          "name": "Enterprise-SPA Modernisierung",
-          "description": "Architektur, Umsetzung und laufende Optimierung komplexer Single-Page-Applications in produktiven Unternehmensumgebungen.",
+          "name": "Enterprise SPA Modernization",
+          "description": "Architecture, implementation and continuous optimization of complex single-page applications in production enterprise environments.",
           "technologies": [
             "Angular",
             "React",
             "TypeScript",
             "REST APIs",
             "Spring Boot"
-          ],
-          "placeId": "place-wuppertal"
+          ]
         },
         {
           "id": "prj-lowcode",
           "name": "Low-Code Business Apps",
-          "description": "Konzeption und Entwicklung von Geschäftsanwendungen mit Mendix zur schnellen Bereitstellung fachlicher Lösungen.",
+          "description": "Design and development of business applications with Mendix to deliver domain solutions quickly.",
           "technologies": [
             "Mendix",
             "SQL",
-            "Integrationen",
-            "Testautomatisierung"
-          ],
-          "placeId": "place-wuppertal"
+            "Integrations",
+            "Test automation"
+          ]
         },
         {
           "id": "prj-ecommerce",
-          "name": "E-Commerce Plattformentwicklung",
-          "description": "Weiterentwicklung von JTL-gestützten Shop- und Warenwirtschaftsprozessen inklusive technischer Betreuung der Infrastruktur.",
+          "name": "E-Commerce Platform Development",
+          "description": "Further development of JTL-based shop and inventory processes including technical support of the infrastructure.",
           "technologies": [
             "PHP",
             "MySQL",
             "JTL Shop",
             "JTL Wawi"
-          ],
-          "placeId": "place-wuppertal"
+          ]
+        },
+        {
+          "id": "prj-paidopsy",
+          "name": "Website for a Child Psychiatry Practice",
+          "description": "Website for a practice for child and adolescent psychiatry and psychotherapy in Trikala, Greece.",
+          "technologies": [],
+          "link": "https://paidopsy-trikala.gr/"
         }
       ],
       "skills": [
         {
           "id": "skills-front",
-          "label": "Frontend",
+          "label": "Frontend & UI",
           "skills": [
             "JavaScript",
+            "TypeScript",
             "Angular",
             "React",
             "Ajax",
             "jQuery",
             "HTML",
             "CSS",
-            "SCSS",
+            "SCSS/SASS",
             "LESS",
-            "SASS"
+            "Bootstrap",
+            "Tailwind",
+            "Flutter/Dart",
+            "ExtJS 3"
           ]
         },
         {
           "id": "skills-backend",
-          "label": "Backend & Datenbanken",
+          "label": "Backend & Languages",
           "skills": [
-            "PHP (OOP, Smarty)",
+            "PHP (OOP, Smarty 2/3/4)",
             "Java (Spring Boot)",
             "C#",
+            "Objective-C",
+            "C++",
+            "Matlab"
+          ]
+        },
+        {
+          "id": "skills-db",
+          "label": "Databases",
+          "skills": [
             "MySQL",
             "PostgreSQL",
             "SQL Server (T-SQL)"
           ]
         },
         {
-          "id": "skills-platform",
-          "label": "Plattformen & Tools",
+          "id": "skills-api",
+          "label": "APIs & Architecture",
           "skills": [
-            "Mendix",
-            "GitHub",
-            "GitLab",
-            "Gitea",
-            "Subversion",
-            "Tailwind",
-            "Bootstrap",
-            "RESTful/SOAP APIs"
+            "RESTful APIs",
+            "SOAP APIs",
+            "Facebook & Instagram APIs",
+            "Google Platforms & APIs"
           ]
         },
         {
-          "id": "skills-additional",
-          "label": "Weitere Kenntnisse",
+          "id": "skills-quality",
+          "label": "Quality & AI Tools",
           "skills": [
-            "Flutter/Dart",
-            "Google APIs",
-            "SAP (Grundkenntnisse)",
-            "Salesforce (Grundkenntnisse)",
-            "Unity",
-            "Unreal 4"
+            "Claude Code",
+            "GitHub Copilot",
+            "Gemini",
+            "SonarQube",
+            "ESLint",
+            "Prettier",
+            "Karma/Jasmine",
+            "Vitest"
+          ]
+        },
+        {
+          "id": "skills-vcs",
+          "label": "DevOps & Version Control",
+          "skills": [
+            "GitHub",
+            "GitLab",
+            "Gitea",
+            "Subversion"
+          ]
+        },
+        {
+          "id": "skills-platform",
+          "label": "Platforms & Tools",
+          "skills": [
+            "Mendix (Low-Code)",
+            "JTL Wawi",
+            "JTL Shop",
+            "SAP",
+            "Salesforce",
+            "MS Office",
+            "Adobe Photoshop"
           ]
         }
       ],
@@ -370,35 +513,58 @@
         {
           "id": "edu-epirus",
           "institution": "Technological Educational Institute of Epirus",
-          "program": "B.Sc. Computer Engineering (Software Engineering)",
+          "program": "B.Sc. in Computer Engineering (Software Engineering)",
           "start": "2008",
           "end": "2015",
-          "details": "Studium mit Schwerpunkt Software Engineering und fundierter Basis in Systementwicklung.",
           "placeId": "place-ioannina"
         },
         {
           "id": "edu-telecom",
-          "institution": "Berufsbildungsinstitut Ioannina",
-          "program": "Telekommunikation & Netzwerke",
+          "institution": "Vocational Training Institute, Ioannina",
+          "program": "Vocational Training (Telecommunications & Networks)",
           "start": "2006",
           "end": "2007",
-          "details": "Praxisnahe Ausbildung im Bereich Netzwerke und Kommunikationstechnik.",
+          "location": "Ioannina, Greece",
           "placeId": "place-ioannina"
         },
         {
+          "id": "edu-ecdl",
+          "institution": "European Computer Driving Licence (ECDL)",
+          "program": "Certification",
+          "start": "2006",
+          "location": "Athens"
+        },
+        {
           "id": "edu-abitur",
-          "institution": "Griechisches Lyzeum Nürnberg",
-          "program": "Abitur",
+          "institution": "Greek Lyceum Nuremberg",
+          "program": "High School Diploma",
           "start": "2004",
-          "end": "2004",
-          "details": "Allgemeine Hochschulreife.",
+          "location": "Nuremberg",
           "placeId": "place-nuernberg"
+        }
+      ],
+      "languages": [
+        {
+          "language": "Greek",
+          "level": "native"
+        },
+        {
+          "language": "English",
+          "level": "C1"
+        },
+        {
+          "language": "German",
+          "level": "B2"
+        },
+        {
+          "language": "Russian",
+          "level": "very good"
         }
       ],
       "contact": {
         "email": "ser.corum@gmail.com",
         "phone": "+49 176 80829512",
-        "location": "Sedanstr. 55a, 42281 Wuppertal",
+        "website": "https://www.kournosenkov.com",
         "links": [
           {
             "label": "GitHub",

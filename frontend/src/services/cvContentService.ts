@@ -1,4 +1,4 @@
-import { cvData } from '@/data/cvData'
+import { cvDataByLocale } from '@/data/cvData'
 import { places } from '@/data/places'
 import type { AppLocale } from '@/i18n'
 import type { CVContent, PlaceMarker } from '@/types/cv'
@@ -24,7 +24,7 @@ export const backendCvContentService: CvContentService = {
     } catch (error) {
       console.warn('Failed to fetch CV data from backend, using local data:', error)
       // Fallback to local data if backend is unavailable
-      return cvData
+      return cvDataByLocale[locale]
     }
   },
   async getPlaceMarkers() {
@@ -34,8 +34,8 @@ export const backendCvContentService: CvContentService = {
 
 // Static service - uses local data (useful for development/testing)
 export const staticCvContentService: CvContentService = {
-  async getCvContent(_locale) {
-    return cvData
+  async getCvContent(locale) {
+    return cvDataByLocale[locale]
   },
   async getPlaceMarkers() {
     return places

@@ -1,19 +1,19 @@
 {
   "nav": {
     "ariaLabel": "Main navigation",
+    "localeAriaLabel": "Language",
     "openMap": "Open map",
+    "backToTop": "Back to top",
     "locale": {
       "de": "DE",
       "en": "EN"
     },
     "sections": {
       "hero": "Profile",
-      "about": "About",
       "experience": "Experience",
       "projects": "Projects",
       "skills": "Skills",
-      "education": "Education",
-      "contact": "Contact"
+      "education": "Education"
     }
   },
   "status": {
@@ -21,28 +21,26 @@
     "profileEndpointUnavailable": "Profile endpoint is currently unavailable"
   },
   "sections": {
-    "hero": "Profile",
-    "about": "About",
     "experience": "Professional Experience",
     "projects": "Projects",
     "skills": "Skills",
-    "education": "Education",
-    "contact": "Contact"
+    "education": "Education & Certifications",
+    "keySkills": "Core skills",
+    "languages": "Languages"
   },
   "actions": {
+    "showMore": "Show {n} more",
+    "showLess": "Show less",
     "showOnMap": "Show on map",
-    "showLocation": "Show location",
-    "location": "Location",
-    "projectLink": "Project link",
-    "openPage": "Open page",
+    "openPage": "Visit website",
+    "print": "PDF / Print",
     "close": "Close"
   },
   "labels": {
-    "until": "to",
-    "skillAreas": "Skill areas",
+    "yearsExperience": "{n}+ years of experience",
+    "currentlyAt": "Currently at {company}",
     "email": "Email",
     "phone": "Phone",
-    "address": "Address",
     "website": "Website"
   },
   "map": {
